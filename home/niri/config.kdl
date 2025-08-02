@@ -1,0 +1,187 @@
+environment {
+  // For XWayland application is urgent
+  DISPLAY ":0"
+  // Fixes java-based applications like IntelliJ
+  _JAVA_AWT_WM_NONREPARENTING "1"
+
+  XCURSOR_THEME "Bibata-Modern-Classic"
+  XCURSOR_SIZE "24"
+  WLR_NO_HARDWARE_CURSOR "1"
+
+  XDG_SESSION_TYPE "wayland"
+  QT_QPA_PLATFORM "wayland"
+  QT_QPA_PLATFORMTHEME "qt6ct"
+
+  MOZ_ENABLE_WAYLAND "1"
+  MOZ_USE_XINPUT2 "1"
+}
+
+input {
+    keyboard {
+        xkb {
+            layout "us,ru,by"
+            options "compose:rctrl"
+        }
+    }
+
+    touchpad {
+        tap
+        natural-scroll
+        scroll-factor 0.4
+    }
+
+    mouse {
+        accel-speed -0.5
+    }
+}
+
+output "DP-1" {
+    mode "3440x1440@144"
+    variable-refresh-rate
+    // focus-at-startup
+    scale 1
+    transform "normal"
+    position x=0 y=0
+}
+
+output "HDMI-A-1" {
+    mode "1920x1080@60"
+    transform "270"
+    position x=3440 y=-300
+}
+
+layout {
+    gaps 16
+
+    center-focused-column "never"
+    always-center-single-column
+
+    preset-column-widths {
+        proportion 1.0
+        proportion 0.75
+        proportion 0.5
+        proportion 0.25
+    }
+
+    preset-window-heights {
+        proportion 1.0
+        proportion 0.75
+        proportion 0.5
+        proportion 0.25
+    }
+
+    // Let windows decide what width they should pick.
+    default-column-width {  }
+
+    focus-ring {
+        width 4
+        active-color "#7fc8ff"
+        inactive-color "#505050"
+    }
+
+    border {
+        off
+    }
+}
+
+screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
+
+// WINDOW RULES
+
+window-rule {
+    match app-id="steam" title=r#"^notificationtoasts_\d+_desktop$"#
+    default-floating-position x=10 y=10 relative-to="bottom-right"
+    open-focused false
+}
+
+window-rule {
+    match app-id="firefox$"
+    exclude title="^Picture-in-Picture$"
+    default-column-width { proportion 1.0; }
+}
+
+// List of applications that should run in Floating mode
+window-rule {
+    match app-id=r#"^jetbrains-idea-ce$"# title="^Confirm Exit$"
+    match app-id=r#"^jetbrains-idea-ce$"# title="^win"
+    match app-id=r#"^jetbrains-studio$"# title="^Confirm Exit$"
+    match app-id=r#"^jetbrains-studio$"# title="^win"
+    match app-id=r#"^jetbrains-studio$"# title="Choose Content to Paste"
+    match app-id=r#"^jetbrains-studio$"# title="Add File to Git"
+    match app-id=r#"^jetbrains-studio$"# title="Delete"
+    match app-id=r#"^jetbrains-studio$"# title="Move"
+    match app-id=r#"^Pinentry"#
+    match app-id=r#"firefox$"# title="^Picture-in-Picture$"
+    match app-id="ONLYOFFICE" title="ONLYOFFICE"
+    open-floating true
+}
+
+// But steam is exception because there is exclusion
+window-rule {
+   match app-id="steam"
+   exclude title="Steam"
+   open-floating true
+}
+
+// List of applications that should run in Fullscreen mode
+window-rule {
+  match app-id="com.gabm.satty" title="satty"
+  match app-id="org.telegram.desktop" title="Media viewer"
+  open-fullscreen true
+}
+
+window-rule {
+    geometry-corner-radius 2
+    clip-to-geometry true
+}
+
+binds {
+    Mod+F hotkey-overlay-title="Enter into <b>Focus</b> mode" { spawn "{{ wlr-which-key }}" "focus"; }
+    Mod+M hotkey-overlay-title="Enter into <b>Move</b> mode"  { spawn "{{ wlr-which-key }}" "move"; }
+    Mod+R hotkey-overlay-title="Enter into <b>Resize</b> mode"  { spawn "{{ wlr-which-key }}" "resize"; }
+
+    Mod+Shift+Slash { show-hotkey-overlay; }
+
+    Alt+Space hotkey-overlay-title="Open application launcher" { spawn "{{ wofi }}"; }
+    Super+L hotkey-overlay-title="Lock screen" { spawn "sh" "-c" "pidof {{ hyprlock }} || {{ hyprlock }}"; }
+
+    XF86AudioPlay allow-when-locked=true { spawn "playerctl" "play-pause"; }
+    XF86AudioPrev allow-when-locked=true { spawn "playerctl" "previous"; }
+    XF86AudioNext allow-when-locked=true { spawn "playerctl" "next"; }
+
+    XF86AudioMedia allow-when-locked=true { spawn "playerctl" "play-pause"; }
+    XF86AudioStop allow-when-locked=true { spawn "playerctl" "stop"; }
+
+    XF86AudioRaiseVolume allow-when-locked=true { spawn "sh" "-c" "$XDG_DATA_HOME/bash-scripts/increase_volume.sh"; }
+    XF86AudioLowerVolume allow-when-locked=true { spawn "sh" "-c" "$XDG_DATA_HOME/bash-scripts/decrease_volume.sh"; }
+    XF86AudioMute        allow-when-locked=true { spawn "sh" "-c" "$XDG_DATA_HOME/bash-scripts/toggle_mute.sh"; }
+
+    XF86MonBrightnessUp allow-when-locked=true { spawn "{{ brightnessctl }}" "set" "5%+"; }
+    XF86MonBrightnessDown allow-when-locked=true { spawn "{{ brightnessctl }}" "set" "5%-"; }
+
+    Mod+Q { close-window; }
+
+    Mod+Shift+F { fullscreen-window; }
+
+    Mod+C { center-column; }
+
+    Mod+V       { toggle-window-floating; }
+    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+    Mod+W { toggle-column-tabbed-display; }
+
+    Mod+Space hotkey-overlay-title="Switch layout" allow-when-locked=true { spawn "lc-niri" "switch"; }
+
+    Print { screenshot; }
+    Ctrl+Print { spawn "sh" "-c" "niri msg action screenshot-screen; sleep 0.2; {{ wl-paste }} | {{ satty }} --filename -"; }
+    Alt+Print { screenshot-window; }
+
+    // Applications such as remote-desktop clients and software KVM switches may
+    // request that niri stops processing the keyboard shortcuts defined here
+    // so they may, for example, forward the key presses as-is to a remote machine.
+    // It's a good idea to bind an escape hatch to toggle the inhibitor,
+    // so a buggy application can't hold your session hostage.
+    Mod+Escape allow-inhibiting=false { toggle-keyboard-shortcuts-inhibit; }
+
+    Mod+Ctrl+M { quit; }
+    Mod+Shift+P { power-off-monitors; }
+}

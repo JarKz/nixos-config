@@ -1,0 +1,166 @@
+/*
+* The colorsheme inspired by catppuccin-latte and used colors from its
+* palette.
+*/
+@import "catppuccin-latte.css";
+
+* {
+  min-height: 0;
+  padding: 0;
+  margin: 0;
+  font-family: JetBrainsMono NFM;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.modules-left,
+.modules-right {
+  background-color: @background;
+}
+
+.modules-left {
+  border-radius: 0 0 3px 0;
+}
+
+.modules-right {
+  border-radius: 0 0 0 3px;
+}
+
+.modules-left widget:first-child label,
+.modules-right widget:first-child label {
+  padding-left: 10px;
+}
+
+.modules-left widget:last-child label,
+.modules-right widget:last-child label {
+  padding-right: 10px;
+}
+
+window#waybar {
+  background: none;
+}
+
+#custom-launcher {
+  /* font-size: 20px; */
+  color: @sky;
+  padding-right: 4px;
+}
+
+#cpu,
+#memory,
+#temperature {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 5px;
+  padding: 0 4px;
+}
+
+#cpu {
+  color: @orange;
+}
+
+#memory {
+  color: @green;
+}
+
+#temperature {
+  color: @blue;
+}
+
+#disk {
+  color: @rosewater;
+}
+
+#custom-blueberry {
+  color: @blue;
+}
+
+#workspaces {
+  background-color: @background;
+  margin-bottom: 5px;
+  border-radius: 0 0 3px 3px;
+}
+
+#workspaces button label {
+  padding: 0 3px;
+}
+
+#workspaces button:nth-child(1) label {
+  color: #8aadf4;
+}
+
+#workspaces button:nth-child(2) label {
+  color: #ed8796;
+}
+
+#workspaces button:nth-child(3) label {
+  color: #a6da95;
+}
+
+#workspaces button:nth-child(4) label {
+  color: #c6a0f6;
+}
+
+#workspaces button:nth-child(5) label {
+  color: #f4dbd6;
+}
+
+#workspaces button:nth-child(6) label {
+  color: #f5a97f;
+}
+
+#workspaces button:nth-child(7) label {
+  color: #8bd5ca;
+}
+
+#workspaces button:nth-child(8) label {
+  color: #68b0d6;
+}
+
+#workspaces button:nth-child(9) label {
+  color: #aab1d3;
+}
+
+#pulseaudio {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  color: blue;
+  border-radius: 5px;
+  padding: 0 8px;
+}
+
+#battery {
+  color: @green;
+}
+
+#battery.urgent {
+  color: @orange;
+}
+
+#battery.critical {
+  color: @red;
+}
+
+#upower {
+  color: @green;
+}
+
+#network {
+  color: @rosewater;
+}
+
+#language {
+  color: @blue;
+}
+
+#custom-dot {
+  color: @text;
+}
+
+#custom-filler {
+  color: @text;
+}
+
+#clock {
+  color: @text;
+}

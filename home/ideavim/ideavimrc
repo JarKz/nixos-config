@@ -1,0 +1,37 @@
+set ideajoin
+
+nmap <leader>ge <Action>(Gradle.ExecuteTask)
+
+nmap gcc <Action>(CommentByLineComment)
+vmap gc <Action>(CommentByLineComment)
+
+map <Space>e <Action>(ShowErrorDescription)
+map <Space>f <Action>(ReformatCode)
+
+" finder -> toggle
+map <leader>ft <Action>(SearchEverywhere)
+" finder -> find file
+map <leader>ff <Action>(GotoFile)
+" grep -> live
+map <leader>gl <Action>(FindInPath)
+
+" c - code
+map <Space>ca <Action>(ShowIntentionActions)
+map <Space>cr <Action>(Refactorings.QuickListPopupAction)
+map <Space>cg <Action>(Generate)
+map <Space>coi <Action>(OptimizeImports)
+
+nmap <C-j> <Action>(EditorDuplicate)
+nmap <C-k> <Action>(EditorDuplicate)
+
+vmap <C-j> <Action>(EditorDuplicate)
+vmap <C-k> <Action>(EditorDuplicate)
+
+vmap <S-j> <Action>(MoveLineDown)
+vmap <S-k> <Action>(MoveLineUp)
+vmap <S-l> <Action>(EditorIndentLineOrSelection)
+vmap <S-h> <Action>(EditorUnindentSelection)
+
+vmap <C-c> <Action>($Copy)
+
+map <leader>xs <Action>(ActivateStructureToolWindow)
