@@ -32,10 +32,12 @@
       };
     in
     {
-      nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
         inherit system;
         inherit specialArgs;
-        modules = [ ./configuration.nix ];
+        modules = [ 
+          ./hosts/desktop/configuration.nix
+        ];
       };
 
       homeConfigurations.test = home-manager.lib.homeManagerConfiguration {

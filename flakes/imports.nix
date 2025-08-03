@@ -1,7 +1,0 @@
-{ ... }:
-{
-  imports =
-    [
-      ./zen-browser.nix
-    ];
-}
