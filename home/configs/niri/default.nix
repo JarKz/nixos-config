@@ -1,6 +1,5 @@
-{ pkgs, ... }:
+{ pkgs, tools, ... }:
 let
-  templateConfig = import ../../tools/template-config.nix;
   vocabulary = {
     "brightnessctl" = "${pkgs.brightnessctl}/bin/brightnessctl";
     "wlr-which-key" = "${pkgs.wlr-which-key}/bin/wlr-which-key";
@@ -20,5 +19,5 @@ in
     wl-clipboard
   ];
 
-  xdg.configFile."niri/config.kdl".text = templateConfig ./config.kdl vocabulary;
+  xdg.configFile."niri/config.kdl".text = tools.templateConfig ./config.kdl vocabulary;
 }

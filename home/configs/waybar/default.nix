@@ -1,6 +1,5 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, tools, ... }:
 let
-  importConfig = import ../../tools/import-config.nix;
   vocabulary = with pkgs; {
     wezterm = "${wezterm}/bin/wezterm";
     filelight = "${kdePackages.filelight}/bin/filelight";
@@ -9,8 +8,8 @@ let
     btop = "${btop}/bin/btop";
   };
 
-  styles = importConfig.import [ ./style.css ./catppuccin-latte.css ] "waybar";
-  defaultModules = importConfig.importTemplated vocabulary ./default-modules.json "waybar";
+  styles = tools.importConfig.import [ ./style.css ./catppuccin-latte.css ] "waybar";
+  defaultModules = tools.importConfig.importTemplated vocabulary ./default-modules.json "waybar";
 in
 {
   home.packages = with pkgs; [

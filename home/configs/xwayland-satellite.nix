@@ -4,5 +4,5 @@
     xwayland-satellite.default
   ];
 
-  systemd.user.units.xwayland-satellite.enable = true;
+  systemd.user.services.xwayland-satellite.enable = true;
 }

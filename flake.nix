@@ -52,6 +52,11 @@
           username = "test";
           rust-overlay = inputs.rust-overlay;
           xwayland-satellite = inputs.xwayland-satellite;
+
+          tools = {
+            importConfig = ./tools/import-config.nix;
+            templateConfig = ./tools/template-config.nix;
+          };
         };
         modules = [ 
           inputs.noti-flake.homeModules.default

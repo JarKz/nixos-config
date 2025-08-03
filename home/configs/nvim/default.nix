@@ -1,6 +1,5 @@
-{ pkgs, lib, rust-overlay, ... }:
+{ pkgs, lib, tools, rust-overlay, ... }:
 let
-  importConfig = import ../../tools/import-config.nix;
   vocabulary = with pkgs; {
     clangd = "${llvmPackages_21.clang-tools}/bin/clangd";
     pyright-langserver = "${pyright}/bin/pyright-langserver";
@@ -17,9 +16,9 @@ let
     cargo-nightly = "$HOME/.local/nightly-rust/bin/cargo";
   };
 
-  ftpluginConfigs = importConfig.importTemplated vocabulary ./ftplugin "nvim";
-  nvimConfigs = importConfig.importTemplated vocabulary ./lua "nvim";
-  spellConfigs = importConfig.importSourced ./spell "nvim";
+  ftpluginConfigs = tools.importConfig.importTemplated vocabulary ./ftplugin "nvim";
+  nvimConfigs = tools.importConfig.importTemplated vocabulary ./lua "nvim";
+  spellConfigs = tools.importConfig.importSourced ./spell "nvim";
 in
 {
   nixpkgs.overlays = [ rust-overlay.overlays.default ];

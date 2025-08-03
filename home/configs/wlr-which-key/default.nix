@@ -1,11 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, tools, ... }:
 let
-  importConfig = import ../../tools/import-config.nix;
   vocabulary = {
     wlr-which-key = "${pkgs.wlr-which-key}/bin/wlr-which-key";
   };
 
-  wkConfigurations = importConfig.importTemplated vocabulary [
+  wkConfigurations = tools.importConfig.importTemplated vocabulary [
     ./config.yaml
     ./focus.yaml
     ./move-workspace.yaml

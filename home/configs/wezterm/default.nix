@@ -1,7 +1,6 @@
-{ ... }:
+{ tools, ... }:
 let
-  importConfig = import ../../tools/import-config.nix;
-  weztermModules = importConfig.import ./modules "wezterm";
+  weztermModules = tools.importConfig.import ./modules "wezterm";
 in
 {
   programs.wezterm = {
