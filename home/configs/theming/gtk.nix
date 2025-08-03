@@ -1,5 +1,9 @@
 { pkgs, ... }:
 {
+  home.packages = [
+    pkgs.nwg-look
+  ];
+
   gtk = {
     enable = true;
 
