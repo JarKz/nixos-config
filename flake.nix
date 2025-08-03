@@ -54,8 +54,8 @@
           xwayland-satellite = inputs.xwayland-satellite;
 
           tools = {
-            importConfig = ./tools/import-config.nix;
-            templateConfig = ./tools/template-config.nix;
+            importConfig = import ./tools/import-config.nix;
+            templateConfig = import ./tools/template-config.nix;
           };
         };
         modules = [ 
