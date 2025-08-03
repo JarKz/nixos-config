@@ -4,6 +4,8 @@
     kdePackages.filelight
     kdePackages.dolphin
 
+    telegram-desktop
+
     trash-cli
   ];
 }

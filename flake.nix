@@ -28,6 +28,11 @@
       url = "github:Supreeeme/xwayland-satellite";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    catppuccin = {
+      url = "github:catppuccin/nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ { nixpkgs, home-manager, ... }:
@@ -41,7 +46,7 @@
       nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
         inherit system;
         inherit specialArgs;
-        modules = [ 
+        modules = [
           ./hosts/desktop/configuration.nix
         ];
       };
@@ -51,16 +56,17 @@
         extraSpecialArgs = {
           username = "test";
           rust-overlay = inputs.rust-overlay;
-          xwayland-satellite = inputs.xwayland-satellite;
+          xwayland-satellite = inputs.xwayland-satellite.packages."${system}";
 
           tools = {
             importConfig = import ./tools/import-config.nix;
             templateConfig = import ./tools/template-config.nix;
           };
         };
-        modules = [ 
+        modules = [
           inputs.noti-flake.homeModules.default
           inputs.zen-browser.homeModules.twilight
+          inputs.catppuccin.homeModules.default
           ./home
         ];
       };

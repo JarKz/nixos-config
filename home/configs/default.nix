@@ -20,6 +20,7 @@
     ./niri
     ./nvim
     ./noti
+    ./theming
   ];
 
   home.sessionVariables = {
