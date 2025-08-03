@@ -5,7 +5,7 @@
     dotIcons.enable = true;
 
     package = pkgs.bibata-cursors;
-    name = "Bibata-Mono-Classic";
+    name = "Bibata-Modern-Classic";
     size = 24;
 
     x11 = {
