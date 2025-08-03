@@ -5,6 +5,7 @@
 
     font = {
       package = pkgs.nerd-fonts.jetbrains-mono;
+      name = "JetBrainsMono NFM Regular";
       size = 12;
     };
 
