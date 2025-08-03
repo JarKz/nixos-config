@@ -25,11 +25,11 @@
     "interval": 1,
     "format": "<big></big> {}%",
     "on-click": "{{ filelight }} /",
-    "on-click-right": "filelight /home"
+    "on-click-right": "{{ filelight }} /home"
   },
   "custom/blueberry": {
     "format": "<big></big>",
-    "on-click": "{{ blueberry }}"
+    "on-click": "{{ blueman-manager }}"
   },
 
   "niri/workspaces": {
@@ -100,7 +100,7 @@
 
   "niri/language": {
     "format": "{}",
-    "on-click": "lc-niri switch"
+    "on-click": "{{ lc-niri }} switch"
   },
 
   "clock": {

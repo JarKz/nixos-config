@@ -10,6 +10,8 @@
     ./zsh.nix
     ./fastfetch.nix
     ./xwayland-satellite.nix
+    ./xdg-portals.nix
+
     ./ideavim
     ./hypr
     ./satty

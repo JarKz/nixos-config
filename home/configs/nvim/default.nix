@@ -1,4 +1,4 @@
-{ pkgs, lib, tools, rust-overlay, ... }:
+{ pkgs, lib, tools, overlays, ... }:
 let
   vocabulary = with pkgs; {
     clangd = "${llvmPackages_21.clang-tools}/bin/clangd";
@@ -39,7 +39,7 @@ let
   efmConfig = tools.importConfig.importTemplated efmVocabulary ./efm-langserver/config.yaml "efm-langserver";
 in
 {
-  nixpkgs.overlays = [ rust-overlay.overlays.default ];
+  nixpkgs.overlays = [ overlays.rust-overlay.overlays.default ];
 
   # Only for cargo to build blink.cmp
   home.file.".local/nightly-rust".source = pkgs.rust-bin.nightly."2025-07-27".minimal;

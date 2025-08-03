@@ -1,7 +1,7 @@
-{ config, xwayland-satellite, ... }:
+{ config, flake-pkgs, ... }:
 {
   home.packages = [
-    xwayland-satellite.default
+    flake-pkgs.xwayland-satellite.default
   ];
 
   systemd.user.services.xwayland-satellite = {
@@ -16,7 +16,7 @@
     Service = {
       Type = "notify";
       NotifyAccess = "all";
-      ExecStart = "${xwayland-satellite.default}/bin/xwayland-satellite";
+      ExecStart = "${flake-pkgs.xwayland-satellite.default}/bin/xwayland-satellite";
       StandardOutput = "journal";
     };
 

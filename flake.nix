@@ -24,6 +24,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    lc-niri = {
+      url = "github:jarkz/layout-carousel-niri";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     xwayland-satellite = {
       url = "github:Supreeeme/xwayland-satellite";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -55,8 +60,14 @@
         pkgs = nixpkgs.legacyPackages."${system}";
         extraSpecialArgs = {
           username = "test";
-          rust-overlay = inputs.rust-overlay;
-          xwayland-satellite = inputs.xwayland-satellite.packages."${system}";
+          overlays = {
+            rust-overlay = inputs.rust-overlay;
+          };
+
+          flake-pkgs = {
+            xwayland-satellite = inputs.xwayland-satellite.packages."${system}";
+            lc-niri = inputs.lc-niri.packages."${system}";
+          };
 
           tools = {
             importConfig = import ./tools/import-config.nix;

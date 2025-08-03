@@ -1,11 +1,12 @@
-{ pkgs, tools, ... }:
+{ pkgs, flake-pkgs, tools, ... }:
 let
   vocabulary = with pkgs; {
     wezterm = "${wezterm}/bin/wezterm";
     filelight = "${kdePackages.filelight}/bin/filelight";
-    blueberry = "${blueberry}/bin/blueberry";
+    blueman-manager = "${blueman}/bin/blueman-manager";
     pavucontrol = "${pavucontrol}/bin/pavucontrol";
     btop = "${btop}/bin/btop";
+    lc-niri = "${flake-pkgs.lc-niri.default}/bin/lc-niri";
   };
 
   defaultModules = tools.importConfig.importTemplated vocabulary ./default-modules.json "waybar";
@@ -14,11 +15,13 @@ in
   home.packages = with pkgs; [
     wezterm
     kdePackages.filelight
-    blueberry
     pavucontrol
     btop
     upower
+    blueman
   ];
+
+  services.blueman-applet.enable = true;
 
   programs.waybar = {
     enable = true;

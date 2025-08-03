@@ -87,13 +87,12 @@
     xwayland.enable = true;
     steam.enable = true;
 
-    ssh = {
-      startAgent = true;
-    };
+    # ssh = {
+    #   startAgent = true;
+    # };
 
     gnupg.agent = {
       enable = true;
-      enableSSHSupport = true;
     };
 
     nix-ld = {
@@ -121,9 +120,6 @@
     };
   };
 
-  system = {
-    copySystemConfiguration = true;
-    stateVersion = "25.05";
-  };
+  system.stateVersion = "25.05";
 }
 
