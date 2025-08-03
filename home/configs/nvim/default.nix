@@ -36,7 +36,7 @@ let
     nixpkgs-fmt = "${nixpkgs-fmt}/bin/nixpkgs-fmt";
   };
 
-  efmConfig = tools.importConfig.importTemplated efmVocabulary ./efm-langserver/config.yaml "efl-langserver";
+  efmConfig = tools.importConfig.importTemplated efmVocabulary ./efm-langserver/config.yaml "efm-langserver";
 in
 {
   nixpkgs.overlays = [ rust-overlay.overlays.default ];
