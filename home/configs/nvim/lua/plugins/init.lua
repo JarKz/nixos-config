@@ -1,5 +1,4 @@
 return {
-  { import = "plugins.colorscheme" },
   { import = "plugins.cmp" },
   { import = "plugins.lsp" },
   { import = "plugins.dap" },

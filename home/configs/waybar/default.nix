@@ -1,4 +1,4 @@
-{ pkgs, lib, tools, ... }:
+{ pkgs, tools, ... }:
 let
   vocabulary = with pkgs; {
     wezterm = "${wezterm}/bin/wezterm";
@@ -8,7 +8,6 @@ let
     btop = "${btop}/bin/btop";
   };
 
-  styles = tools.importConfig.import [ ./style.css ./catppuccin-latte.css ] "waybar";
   defaultModules = tools.importConfig.importTemplated vocabulary ./default-modules.json "waybar";
 in
 {
@@ -24,6 +23,8 @@ in
   programs.waybar = {
     enable = true;
     systemd.enable = true;
+
+    style = builtins.readFile ./style.css;
 
     settings = {
       mainBar = {
@@ -71,8 +72,5 @@ in
     };
   };
 
-  xdg.configFile = lib.mkMerge [
-    styles
-    defaultModules
-  ];
+  xdg.configFile = defaultModules;
 }
