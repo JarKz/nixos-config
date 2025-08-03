@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -20,6 +21,11 @@
 
     noti-flake = {
       url = "github:jarkz/noti-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    xwayland-satellite = {
+      url = "github:Supreeeme/xwayland-satellite";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -45,6 +51,7 @@
         extraSpecialArgs = {
           username = "test";
           rust-overlay = inputs.rust-overlay;
+          xwayland-satellite = inputs.xwayland-satellite;
         };
         modules = [ 
           inputs.noti-flake.homeModules.default
