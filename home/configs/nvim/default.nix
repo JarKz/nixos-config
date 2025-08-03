@@ -19,6 +19,24 @@ let
   ftpluginConfigs = tools.importConfig.importTemplated vocabulary ./ftplugin "nvim";
   nvimConfigs = tools.importConfig.importTemplated vocabulary ./lua "nvim";
   spellConfigs = tools.importConfig.importSourced ./spell "nvim";
+
+  efmVocabulary = with pkgs; {
+    cppcheck = "${cppcheck}/bin/cppcheck";
+    vale = "${vale}/bin/vale";
+    markdownlint = "${markdownlint-cli}/bin/markdownlint";
+    jq = "${jq}/bin/jq";
+    fixjson = "${fixjson}/bin/fixjson";
+    shfmt = "${shfmt}/bin/shfmt";
+    yamllint = "${yamllint}/bin/yamllint";
+    prettier = "${prettier}/bin/prettier";
+    stylelint = "${stylelint}/bin/stylelint";
+    htmlbeautifier = "${rubyPackages.htmlbeautifier}/bin/htmlbeautifier";
+    tidy = "${html-tidy}/bin/tidy";
+    autopep8 = "${python313Packages.autopep8}/bin/autopep8";
+    nixpkgs-fmt = "${nixpkgs-fmt}/bin/nixpkgs-fmt";
+  };
+
+  efmConfig = tools.importConfig.importTemplated efmVocabulary ./efm-langserver/config.yaml "efl-langserver";
 in
 {
   nixpkgs.overlays = [ rust-overlay.overlays.default ];
@@ -50,19 +68,22 @@ in
     pyright
     bash-language-server # bashls
     vscode-langservers-extracted # html, cssls, eslint, json, markdown
-    stylelint-lsp
     lua-language-server # lua_ls
 
     # Linters
+    cppcheck
+    markdownlint-cli
+    stylelint
     vale
     python313Packages.autopep8
     fixjson
     jq
-    rubyPackages_3_4.htmlbeautifier
+    rubyPackages.htmlbeautifier
+    html-tidy
     prettier
     shfmt
     yamllint
-    nixfmt
+    nixpkgs-fmt
   ];
 
   programs.neovim = {
@@ -79,5 +100,7 @@ in
     ftpluginConfigs
     nvimConfigs
     spellConfigs
+
+    efmConfig
   ];
 }
