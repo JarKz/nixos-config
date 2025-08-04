@@ -9,7 +9,7 @@
 
 .modules-left,
 .modules-right {
-  background-color: @surface0;
+  background-color: @base;
 }
 
 .modules-left {
@@ -70,7 +70,7 @@ window#waybar {
 }
 
 #workspaces {
-  background-color: @surface0;
+  background-color: @base;
   margin-bottom: 5px;
   border-radius: 0 0 3px 3px;
 }
