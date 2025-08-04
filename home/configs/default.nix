@@ -11,6 +11,7 @@
     ./fastfetch.nix
     ./xwayland-satellite.nix
     ./xdg-portals.nix
+    ./browsers.nix
 
     ./ideavim
     ./hypr

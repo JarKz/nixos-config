@@ -56,10 +56,10 @@
         ];
       };
 
-      homeConfigurations.test = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations.jarkz = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages."${system}";
         extraSpecialArgs = {
-          username = "test";
+          username = "jarkz";
           overlays = {
             rust-overlay = inputs.rust-overlay;
           };
