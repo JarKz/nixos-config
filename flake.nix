@@ -73,6 +73,8 @@
             importConfig = import ./tools/import-config.nix;
             templateConfig = import ./tools/template-config.nix;
           };
+
+          misc = import ./misc;
         };
         modules = [
           inputs.noti-flake.homeModules.default

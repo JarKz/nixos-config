@@ -9,6 +9,7 @@
     ./yazi.nix
     ./zsh.nix
     ./fastfetch.nix
+    ./swww.nix
     ./xwayland-satellite.nix
     ./xdg-portals.nix
     ./browsers.nix
