@@ -3,6 +3,7 @@
   home.homeDirectory = "/home/${username}";
 
   imports = [
+    ./ssh-agent.nix
     ./git.nix
     ./bat.nix
     ./btop.nix
