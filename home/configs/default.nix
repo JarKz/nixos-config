@@ -1,4 +1,11 @@
-{ username, ... }: {
+{ username, ... }:
+let
+  sessionVariables = {
+    XDG_CONFIG_HOME = "$HOME/.config";
+    QT_QPA_PLATFORM = "wayland";
+  };
+in
+{
   home.username = "${username}";
   home.homeDirectory = "/home/${username}";
 
@@ -14,6 +21,7 @@
     ./xwayland-satellite.nix
     ./xdg-portals.nix
     ./browsers.nix
+    ./obs.nix
 
     ./ideavim
     ./hypr
@@ -28,9 +36,8 @@
     ./theming
   ];
 
-  home.sessionVariables = {
-    XDG_CONFIG_HOME = "$HOME/.config";
-  };
+  home.sessionVariables = sessionVariables;
+  systemd.user.sessionVariables = sessionVariables;
 
   home.stateVersion = "25.05";
   programs.home-manager.enable = true;

@@ -12,13 +12,10 @@
     discord
     telegram-desktop
 
-    pipewire # For screencast in OBS-Studio
-
     trash-cli
   ];
 
   programs = {
-    obs-studio.enable = true;
     mpv.enable = true;
     ghostty.enable = true;
     element-desktop.enable = true;
