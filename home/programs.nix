@@ -12,6 +12,9 @@
     discord
     telegram-desktop
 
+    # Temporary for checking the stability of usage
+    materialgram
+
     trash-cli
   ];
 
