@@ -1,12 +1,26 @@
-{ pkgs, lib, tools, overlays, ... }:
+{
+  pkgs,
+  lib,
+  tools,
+  overlays,
+  ...
+}:
 let
+  rustToolchain = pkgs.rust-bin.stable.latest.default.override {
+    extensions = [
+      "rust-analyzer"
+      "clippy"
+      "rust-src"
+    ];
+  };
+
   vocabulary = with pkgs; {
     clangd = "${llvmPackages_21.clang-tools}/bin/clangd";
     pyright-langserver = "${pyright}/bin/pyright-langserver";
     vscode-css-language-server = "${vscode-langservers-extracted}/bin/vscode-css-language-server";
     vscode-html-language-server = "${vscode-langservers-extracted}/bin/vscode-html-language-server";
     bash-language-server = "${bash-language-server}/bin/bash-language-server";
-    rust_analyzer = "${rust-bin.stable.latest.default}/bin/rust_analyzer";
+    rust-analyzer = "${rustToolchain}/bin/rust-analyzer";
     nil = "${nil}/bin/nil";
     efm-langserver = "${efm-langserver}/bin/efm-langserver";
 
@@ -36,7 +50,9 @@ let
     nixpkgs-fmt = "${nixpkgs-fmt}/bin/nixpkgs-fmt";
   };
 
-  efmConfig = tools.importConfig.importTemplated efmVocabulary ./efm-langserver/config.yaml "efm-langserver";
+  efmConfig =
+    tools.importConfig.importTemplated efmVocabulary ./efm-langserver/config.yaml
+      "efm-langserver";
 in
 {
   nixpkgs.overlays = [ overlays.rust-overlay.overlays.default ];
@@ -44,20 +60,28 @@ in
   # Only for cargo to build blink.cmp
   home.file.".local/nightly-rust".source = pkgs.rust-bin.nightly."2025-07-27".minimal;
 
-  home.packages = with pkgs; [
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+
+    extraLuaConfig = builtins.readFile ./init.lua;
+    extraLuaPackages =
+      luaPkgs: with luaPkgs; [
+        luautf8
+      ];
+    extraPackages = with pkgs; [
     gcc
     zig
     tree-sitter
 
     # For rust_analyzer
-    (rust-bin.stable.latest.default.override {
-      extensions = [ "rust-analyzer" ];
-    })
+    rustToolchain
 
     # Utilities
     fzf
     ripgrep
     translate-shell
+    python314
 
     # DAP
     lldb
@@ -86,15 +110,6 @@ in
     yamllint
     nixpkgs-fmt
   ];
-
-  programs.neovim = {
-    enable = true;
-    defaultEditor = true;
-
-    extraLuaConfig = builtins.readFile ./init.lua;
-    extraLuaPackages = luaPkgs: with luaPkgs; [
-      luautf8
-    ];
   };
 
   xdg.configFile = lib.mkMerge [

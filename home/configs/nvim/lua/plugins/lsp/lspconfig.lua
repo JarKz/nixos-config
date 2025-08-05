@@ -91,7 +91,7 @@ return {
         cmd = { "{{ bash-language-server }}", "start" },
       },
       rust_analyzer = {
-        cmd = { "{{ rust_analyzer }}" },
+        cmd = { "{{ rust-analyzer }}" },
 
         settings = {
           ['rust-analyzer'] = {
