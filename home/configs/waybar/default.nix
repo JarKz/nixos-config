@@ -1,4 +1,10 @@
-{ pkgs, flake-pkgs, tools, ... }:
+{
+  pkgs,
+  flake-pkgs,
+  tools,
+  machineSpecs,
+  ...
+}:
 let
   vocabulary = with pkgs; {
     wezterm = "${wezterm}/bin/wezterm";
@@ -10,6 +16,30 @@ let
   };
 
   defaultModules = tools.importConfig.importTemplated vocabulary ./default-modules.json "waybar";
+
+  makeBar =
+    {
+      output-name,
+      modules-left,
+      modules-center,
+      modules-right,
+    }:
+    {
+      layer = "top";
+      margin-top = 0;
+      margin-left = 0;
+      margin-right = 0;
+      margin-bottom = 0;
+      spacing = 4;
+
+      include = [
+        "$XDG_CONFIG_HOME/waybar/default-modules.json"
+      ];
+
+      output = [ output-name ];
+
+      inherit modules-left modules-center modules-right;
+    };
 in
 {
   home.packages = with pkgs; [
@@ -30,17 +60,8 @@ in
     style = builtins.readFile ./style.css;
 
     settings = {
-      mainBar = {
-        layer = "top";
-        margin-top = 0;
-        margin-left = 0;
-        margin-right = 0;
-        margin-bottom = 0;
-        spacing = 4;
-
-        include = [
-          "$XDG_CONFIG_HOME/waybar/default-modules.json"
-        ];
+      mainBar = makeBar {
+        output-name = machineSpecs.outputs.main.name;
 
         modules-left = [
           "custom/launcher"
@@ -66,6 +87,33 @@ in
           "pulseaudio"
           "custom/filler"
           "network"
+          "custom/filler"
+          "niri/language"
+          "custom/filler"
+          "clock"
+        ];
+      };
+      secondaryBar = makeBar {
+        output-name = machineSpecs.outputs.secondary.name;
+
+        modules-left = [
+          "custom/launcher"
+          "custom/separator"
+          "cpu"
+          "memory"
+          "temperature"
+          "custom/filler"
+          "disk"
+          "custom/filler"
+          "custom/blueberry"
+        ];
+
+        modules-center = [
+          "niri/workspaces"
+        ];
+
+        modules-right = [
+          "pulseaudio"
           "custom/filler"
           "niri/language"
           "custom/filler"
