@@ -45,6 +45,7 @@ in
     ./wofi
     ./niri
     ./nvim
+    ./zed
     ./noti
     ./theming
   ];
