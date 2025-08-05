@@ -57,6 +57,7 @@ in
     # Utilities
     fzf
     ripgrep
+    translate-shell
 
     # DAP
     lldb
