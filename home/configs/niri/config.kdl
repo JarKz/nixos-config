@@ -1,17 +1,18 @@
 environment {
-  // For XWayland application is urgent
-  DISPLAY ":0"
-  // Fixes java-based applications like IntelliJ
-  _JAVA_AWT_WM_NONREPARENTING "1"
+    XDG_SESSION_TYPE "wayland"
+    QT_QPA_PLATFORM "wayland"
 
-  XCURSOR_THEME "Bibata-Modern-Classic"
-  XCURSOR_SIZE "24"
-  WLR_NO_HARDWARE_CURSOR "1"
+    // For XWayland application is urgent
+    DISPLAY ":0"
+    // Fixes java-based applications like IntelliJ
+    _JAVA_AWT_WM_NONREPARENTING "1"
 
-  XDG_SESSION_TYPE "wayland"
+    XCURSOR_THEME "Bibata-Modern-Classic"
+    XCURSOR_SIZE "24"
+    WLR_NO_HARDWARE_CURSOR "1"
 
-  MOZ_ENABLE_WAYLAND "1"
-  MOZ_USE_XINPUT2 "1"
+    MOZ_ENABLE_WAYLAND "1"
+    MOZ_USE_XINPUT2 "1"
 }
 
 input {
@@ -26,6 +27,7 @@ input {
         tap
         natural-scroll
         scroll-factor 0.4
+        click-method "clickfinger"
     }
 
     mouse {
@@ -33,20 +35,9 @@ input {
     }
 }
 
-output "DP-1" {
-    mode "3440x1440@144"
-    variable-refresh-rate
-    // focus-at-startup
-    scale 1
-    transform "normal"
-    position x=0 y=0
-}
+{{ mainOutput }}
 
-output "HDMI-A-1" {
-    mode "1920x1080@60"
-    transform "270"
-    position x=3440 y=-300
-}
+{{ secondaryOutput }}
 
 layout {
     gaps 16

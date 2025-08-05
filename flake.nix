@@ -46,6 +46,9 @@
       specialArgs = {
         inherit system inputs;
       };
+
+      desktopSpecs = builtins.fromTOML (builtins.readFile ./specs/desktop.toml);
+      laptopSpecs = builtins.fromTOML (builtins.readFile ./specs/laptop.toml);
     in
     {
       nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
@@ -56,33 +59,56 @@
         ];
       };
 
-      homeConfigurations.jarkz = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages."${system}";
-        extraSpecialArgs = {
-          username = "jarkz";
-          overlays = {
+      homeConfigurations =
+        let
+          pkgs = nixpkgs.legacyPackages."${system}";
+          defaultOverlays = {
             rust-overlay = inputs.rust-overlay;
           };
-
           flake-pkgs = {
             xwayland-satellite = inputs.xwayland-satellite.packages."${system}";
             lc-niri = inputs.lc-niri.packages."${system}";
           };
-
           tools = {
             importConfig = import ./tools/import-config.nix;
             templateConfig = import ./tools/template-config.nix;
           };
-
           misc = import ./misc;
+
+          defaultModules = [
+            inputs.noti-flake.homeModules.default
+            inputs.zen-browser.homeModules.twilight
+            inputs.catppuccin.homeModules.default
+            ./home
+          ];
+
+        in
+        {
+          "jarkz@desktop" =
+            home-manager.lib.homeManagerConfiguration {
+              pkgs = pkgs;
+              extraSpecialArgs = {
+                username = "jarkz";
+                machineSpecs = desktopSpecs;
+                overlays = defaultOverlays;
+
+                inherit flake-pkgs tools misc;
+              };
+              modules = defaultModules;
+            };
+          "jarkz@laptop" =
+            home-manager.lib.homeManagerConfiguration {
+              pkgs = pkgs;
+              extraSpecialArgs = {
+                username = "jarkz";
+                machineSpecs = laptopSpecs;
+                overlays = defaultOverlays;
+
+                inherit flake-pkgs tools misc;
+              };
+              modules = defaultModules;
+            };
         };
-        modules = [
-          inputs.noti-flake.homeModules.default
-          inputs.zen-browser.homeModules.twilight
-          inputs.catppuccin.homeModules.default
-          ./home
-        ];
-      };
     };
 }
 
