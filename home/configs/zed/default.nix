@@ -1,7 +1,13 @@
-{ ... }:
+{
+  config,
+  pkgs,
+  machineSpecs,
+  ...
+}:
 {
   programs.zed-editor = {
     enable = true;
+    package = if machineSpecs.is-laptop then config.lib.nixGL.wrap pkgs.zed-editor else pkgs.zed-editor;
 
     userSettings = {
       telemetry = {

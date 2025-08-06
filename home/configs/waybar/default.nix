@@ -1,4 +1,5 @@
 {
+  config,
   pkgs,
   flake-pkgs,
   tools,
@@ -6,6 +7,8 @@
   ...
 }:
 let
+  wezterm = if machineSpecs.is-laptop then config.lib.nixGL.wrap pkgs.wezterm else pkgs.wezterm;
+
   vocabulary = with pkgs; {
     wezterm = "${wezterm}/bin/wezterm";
     filelight = "${kdePackages.filelight}/bin/filelight";

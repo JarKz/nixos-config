@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  config,
+  pkgs,
+  machineSpecs,
+  ...
+}:
 {
   home.packages = with pkgs; [
     kdePackages.filelight
@@ -20,7 +25,10 @@
 
   programs = {
     mpv.enable = true;
-    ghostty.enable = true;
+    ghostty = {
+      enable = true;
+      package = if machineSpecs.is-laptop then config.lib.nixGL.wrap pkgs.ghostty else pkgs.ghostty;
+    };
     element-desktop.enable = true;
   };
 }

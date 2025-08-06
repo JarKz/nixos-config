@@ -1,3 +1,5 @@
+is-laptop = false
+
 [outputs.main]
 name = "DP-1"
 width = "3440"

@@ -9,6 +9,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nixGL = {
+      url = "github:nix-community/nixGL";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     rust-overlay = {
       url = "github:oxalica/rust-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -103,6 +108,7 @@
                 username = "jarkz";
                 machineSpecs = laptopSpecs;
                 overlays = defaultOverlays;
+                nixGL = inputs.nixGL;
 
                 inherit flake-pkgs tools misc;
               };

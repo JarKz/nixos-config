@@ -1,10 +1,17 @@
-{ tools, ... }:
+{
+  config,
+  pkgs,
+  tools,
+  machineSpecs,
+  ...
+}:
 let
   weztermModules = tools.importConfig.import ./modules "wezterm";
 in
 {
   programs.wezterm = {
     enable = true;
+    package = if machineSpecs.is-laptop then config.lib.nixGL.wrap pkgs.wezterm else pkgs.wezterm;
 
     enableBashIntegration = true;
     enableZshIntegration = true;
