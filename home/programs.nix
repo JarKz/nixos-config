@@ -2,9 +2,12 @@
   config,
   pkgs,
   machineSpecs,
+  overlays,
   ...
 }:
 {
+  nixpkgs.overlays = [ overlays.rust-overlay.overlays.default ];
+
   home.packages = with pkgs; [
     kdePackages.filelight
     kdePackages.dolphin
@@ -16,6 +19,13 @@
 
     discord
     telegram-desktop
+    (rust-bin.stable.latest.default.override {
+      extensions = [
+        "rust-analyzer"
+        "rust-src"
+        "clippy"
+      ];
+    })
 
     # Temporary for checking the stability of usage
     materialgram

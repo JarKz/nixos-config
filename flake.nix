@@ -67,6 +67,7 @@
       homeConfigurations =
         let
           pkgs = nixpkgs.legacyPackages."${system}";
+          nixGL = inputs.nixGL;
           defaultOverlays = {
             rust-overlay = inputs.rust-overlay;
           };
@@ -97,7 +98,7 @@
                 machineSpecs = desktopSpecs;
                 overlays = defaultOverlays;
 
-                inherit flake-pkgs tools misc;
+                inherit nixGL flake-pkgs tools misc;
               };
               modules = defaultModules;
             };
@@ -108,9 +109,8 @@
                 username = "jarkz";
                 machineSpecs = laptopSpecs;
                 overlays = defaultOverlays;
-                nixGL = inputs.nixGL;
 
-                inherit flake-pkgs tools misc;
+                inherit nixGL flake-pkgs tools misc;
               };
               modules = defaultModules;
             };
