@@ -1,13 +1,23 @@
-{ pkgs, flake-pkgs, machineSpecs, tools, ... }:
+{
+  config,
+  pkgs,
+  flake-pkgs,
+  machineSpecs,
+  tools,
+  ...
+}:
 let
-  vocabulary = {
-    brightnessctl = "${pkgs.brightnessctl}/bin/brightnessctl";
-    wlr-which-key = "${pkgs.wlr-which-key}/bin/wlr-which-key";
-    wl-paste = "${pkgs.wl-clipboard}/bin/wl-paste";
-    satty = "${pkgs.satty}/bin/satty";
-    wofi = "${pkgs.wofi}/bin/wofi";
-    hyprlock = "${pkgs.hyprlock}/bin/hyprlock";
-    playerctl = "${pkgs.playerctl}/bin/playerctl";
+  hyprlock = if machineSpecs.is-laptop then config.lib.nixGL.wrap pkgs.hyprlock else pkgs.hyprlock;
+
+  vocabulary = with pkgs; {
+    sh = "${bash}/bin/sh";
+    brightnessctl = "${brightnessctl}/bin/brightnessctl";
+    wlr-which-key = "${wlr-which-key}/bin/wlr-which-key";
+    wl-paste = "${wl-clipboard}/bin/wl-paste";
+    satty = "${satty}/bin/satty";
+    wofi = "${wofi}/bin/wofi";
+    hyprlock = "${hyprlock}/bin/hyprlock";
+    playerctl = "${playerctl}/bin/playerctl";
     lc-niri = "${flake-pkgs.lc-niri.default}/bin/lc-niri";
 
     mainOutput = ''
