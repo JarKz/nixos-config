@@ -7,7 +7,9 @@
   ...
 }:
 let
-  hyprlock = if machineSpecs.is-laptop then config.lib.nixGL.wrap pkgs.hyprlock else pkgs.hyprlock;
+  glWrap = pkg: if machineSpecs.is-laptop then config.lib.nixGL.wrap pkg else pkg;
+  hyprlock = glWrap pkgs.hyprlock;
+  satty = glWrap pkgs.satty;
 
   vocabulary = with pkgs; {
     sh = "${bash}/bin/sh";
@@ -42,12 +44,12 @@ let
   };
 in
 {
-  home.packages = [
-    pkgs.brightnessctl
-    pkgs.wlr-which-key
-    pkgs.satty
-    pkgs.wl-clipboard
-    pkgs.playerctl
+  home.packages = with pkgs;[
+    brightnessctl
+    wlr-which-key
+    satty
+    wl-clipboard
+    playerctl
     flake-pkgs.lc-niri.default
   ];
 

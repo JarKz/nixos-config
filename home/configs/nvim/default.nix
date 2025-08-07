@@ -69,47 +69,48 @@ in
       luaPkgs: with luaPkgs; [
         luautf8
       ];
+
     extraPackages = with pkgs; [
-    gcc
-    zig
-    tree-sitter
+      gcc
+      zig
+      tree-sitter
 
-    # For rust_analyzer
-    rustToolchain
+      # For rust-analyzer
+      rustToolchain
 
-    # Utilities
-    fzf
-    ripgrep
-    translate-shell
-    python314
+      # Utilities
+      fzf
+      ripgrep
+      translate-shell
+      python314
 
-    # DAP
-    lldb
+      # DAP
+      lldb
 
-    # Language Servers
-    llvmPackages_21.clang-tools # clangd
-    efm-langserver
-    nil # nil_ls
-    pyright
-    bash-language-server # bashls
-    vscode-langservers-extracted # html, cssls, eslint, json, markdown
-    lua-language-server # lua_ls
+      # Language Servers
+      llvmPackages_21.clang-tools # clangd
+      efm-langserver
+      nil # nil_ls
+      pyright
+      bash-language-server # bashls
+      vscode-langservers-extracted # html, cssls, eslint, json, markdown
+      lua-language-server # lua_ls
 
-    # Linters
-    cppcheck
-    markdownlint-cli
-    stylelint
-    vale
-    python313Packages.autopep8
-    fixjson
-    jq
-    rubyPackages.htmlbeautifier
-    html-tidy
-    prettier
-    shfmt
-    yamllint
-    nixpkgs-fmt
-  ];
+      # Linters
+      cppcheck
+      markdownlint-cli
+      stylelint
+      vale
+      python313Packages.autopep8
+      fixjson
+      jq
+      rubyPackages.htmlbeautifier
+      html-tidy
+      prettier
+      shfmt
+      yamllint
+      nixpkgs-fmt
+    ];
   };
 
   xdg.configFile = lib.mkMerge [

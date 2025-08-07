@@ -8,5 +8,6 @@
     kvantum.enable = false;
     wezterm.enable = false;
     hyprlock.enable = false;
+    nvim.enable = false;
   };
 }
