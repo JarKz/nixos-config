@@ -1,4 +1,4 @@
-{ config, misc, pkgs, ... }:
+{ config, misc, pkgs, machineSpecs, ... }:
 {
   services.swww.enable = true;
 
@@ -11,8 +11,8 @@
     Service = {
       Type = "oneshot";
       ExecStart = ''
-        ${pkgs.swww}/bin/swww img ${misc.background-images.ghost-of-thusima} --output DP-1
-        ${pkgs.swww}/bin/swww img ${misc.background-images.melina} --output HDMI-A-1
+        ${pkgs.swww}/bin/swww img ${misc.background-images.ghost-of-thusima} --outputs ${machineSpecs.outputs.main.name}
+        ${pkgs.swww}/bin/swww img ${misc.background-images.melina} --outputs ${machineSpecs.outputs.secondary.name}
       '';
     };
     Install = {
