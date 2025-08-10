@@ -9,7 +9,7 @@ let
   rustToolchain = pkgs.rust-bin.stable.latest.default.override {
     extensions = [
       "rust-analyzer"
-      "rust-std"
+      "rust-src"
       "clippy"
     ];
   };
@@ -39,27 +39,6 @@ in
       buffer_font_family = "JetBrainsMono NFM";
       buffer_font_size = 20;
       buffer_font_weight = 400;
-
-      lsp = {
-        rust-analyzer = {
-          binary = {
-            path = "${rustToolchain}/bin/rust-analyzer";
-            arguments = [ ];
-          };
-        };
-
-        harper-ls = {
-          binary = {
-            path = "${pkgs.harper}/bin/harper-ls";
-          };
-        };
-
-        typos-lsp = {
-          binary = {
-            path = "${pkgs.typos-lsp}/bin/harper-ls";
-          };
-        };
-      };
     };
 
     userKeymaps = [
