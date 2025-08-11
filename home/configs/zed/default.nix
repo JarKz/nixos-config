@@ -72,6 +72,8 @@ in
         context = "Editor && vim_mode == visual";
         bindings = {
           "ctrl-c" = "editor::Copy";
+          "shift-j" = "editor::MoveLineDown";
+          "shift-k" = "editor::MoveLineUp";
         };
       }
       {
