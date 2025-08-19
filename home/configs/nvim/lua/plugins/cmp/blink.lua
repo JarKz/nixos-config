@@ -18,9 +18,9 @@ return {
     },
 
     cmdline = {
-      keymap = {
-        preset = "inherit",
-      },
+      -- keymap = {
+      --   preset = "inherit",
+      -- },
       completion = {
         menu = { auto_show = true },
       },
