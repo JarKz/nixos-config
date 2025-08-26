@@ -3,7 +3,7 @@
     ./audio.nix
     ./bluetooth.nix
     ./fonts.nix
-    ./gc.nix
+    ./store.nix
     ./login.nix
     ./users.nix
     ./vpn.nix
