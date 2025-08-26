@@ -18,7 +18,7 @@
     fim
 
     discord
-    telegram-desktop
+    materialgram
     (rust-bin.stable.latest.default.override {
       extensions = [
         "rust-analyzer"
@@ -26,9 +26,6 @@
         "clippy"
       ];
     })
-
-    # Temporary for checking the stability of usage
-    materialgram
 
     trash-cli
   ];
