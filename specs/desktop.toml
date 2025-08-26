@@ -1,7 +1,7 @@
 is-laptop = false
 
 [outputs.main]
-name = "DP-1"
+name = "DP-2"
 width = "3440"
 height = "1440"
 scale = "1"

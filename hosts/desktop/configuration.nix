@@ -8,7 +8,6 @@
 
   imports = [
     ./hardware-configuration.nix
-    ./nvidia.nix
 
     ../../system
   ];
