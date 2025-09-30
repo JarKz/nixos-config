@@ -5,7 +5,7 @@ name = "DP-2"
 width = "3440"
 height = "1440"
 scale = "1"
-framerate = "144"
+framerate = "164.999"
 transform = "normal"
 offset = { x = "0", y = "0" }
 
@@ -14,6 +14,6 @@ name = "HDMI-A-1"
 width = "1920"
 height = "1080"
 scale = "1"
-framerate = "60"
+framerate = "60.000"
 transform = "270"
 offset = { x = "3440", y = "-300" }

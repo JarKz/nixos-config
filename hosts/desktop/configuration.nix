@@ -24,8 +24,6 @@
     };
   };
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
-
   networking.hostName = "desktop";
   networking.networkmanager.enable = true;
 
