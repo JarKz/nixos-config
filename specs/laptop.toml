@@ -1,4 +1,4 @@
-is-laptop = true
+is-not-nixos = true
 
 [outputs.main]
 name = "eDP-1"

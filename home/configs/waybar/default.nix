@@ -7,7 +7,7 @@
   ...
 }:
 let
-  wezterm = if machineSpecs.is-laptop then config.lib.nixGL.wrap pkgs.wezterm else pkgs.wezterm;
+  wezterm = if machineSpecs.is-not-nixos then config.lib.nixGL.wrap pkgs.wezterm else pkgs.wezterm;
 
   vocabulary = with pkgs; {
     wezterm = "${wezterm}/bin/wezterm";

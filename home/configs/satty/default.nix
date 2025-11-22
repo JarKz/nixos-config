@@ -5,7 +5,7 @@
   ...
 }:
 let
-  satty = if machineSpecs.is-laptop then config.lib.nixGL.wrap pkgs.satty else pkgs.satty;
+  satty = if machineSpecs.is-not-nixos then config.lib.nixGL.wrap pkgs.satty else pkgs.satty;
 in
 {
   home.packages = [ satty ];

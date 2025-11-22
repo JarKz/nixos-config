@@ -19,7 +19,7 @@ in
 
   programs.zed-editor = {
     enable = true;
-    package = if machineSpecs.is-laptop then config.lib.nixGL.wrap pkgs.zed-editor else pkgs.zed-editor;
+    package = if machineSpecs.is-not-nixos then config.lib.nixGL.wrap pkgs.zed-editor else pkgs.zed-editor;
 
     extensions = [
       "harper"

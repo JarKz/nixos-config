@@ -7,7 +7,7 @@
   ...
 }:
 let
-  glWrap = pkg: if machineSpecs.is-laptop then config.lib.nixGL.wrap pkg else pkg;
+  glWrap = pkg: if machineSpecs.is-not-nixos then config.lib.nixGL.wrap pkg else pkg;
   hyprlock = glWrap pkgs.hyprlock;
   satty = glWrap pkgs.satty;
 

@@ -34,7 +34,7 @@
     mpv.enable = true;
     ghostty = {
       enable = true;
-      package = if machineSpecs.is-laptop then config.lib.nixGL.wrap pkgs.ghostty else pkgs.ghostty;
+      package = if machineSpecs.is-not-nixos then config.lib.nixGL.wrap pkgs.ghostty else pkgs.ghostty;
     };
     element-desktop.enable = true;
   };

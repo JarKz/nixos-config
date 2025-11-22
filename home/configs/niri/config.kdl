@@ -17,7 +17,8 @@ input {
     keyboard {
         xkb {
             layout "us,ru,by"
-            options "compose:rctrl"
+            variant "colemak,diktor,"
+            options "compose:rctrl,caps:swapescape"
         }
     }
 

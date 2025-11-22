@@ -1,6 +1,6 @@
 { config, pkgs, machineSpecs, ... }:
 let
-  hyprlock = if machineSpecs.is-laptop then config.lib.nixGL.wrap pkgs.hyprlock else pkgs.hyprlock;
+  hyprlock = if machineSpecs.is-not-nixos then config.lib.nixGL.wrap pkgs.hyprlock else pkgs.hyprlock;
 in
 {
   services.hypridle = {

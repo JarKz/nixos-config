@@ -11,7 +11,7 @@ in
 {
   programs.wezterm = {
     enable = true;
-    package = if machineSpecs.is-laptop then config.lib.nixGL.wrap pkgs.wezterm else pkgs.wezterm;
+    package = if machineSpecs.is-not-nixos then config.lib.nixGL.wrap pkgs.wezterm else pkgs.wezterm;
 
     enableBashIntegration = true;
     enableZshIntegration = true;

@@ -1,4 +1,4 @@
-is-laptop = false
+is-not-nixos = false
 
 [outputs.main]
 name = "DP-2"
