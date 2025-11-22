@@ -50,11 +50,13 @@ Below steps are provided either as next steps after NixOS configuration or for s
 
 You may have another output size, its name as another port and so on. I've grouped them into `machineSpecs` that is described by TOML files at `specs/*.toml`. And tweak it when you deem it necessary.
 
+If you have some questions of these specs, you can read [a simple documenation for this](./specs/SPECIFICATION.md).
+
 #### Desktop and Laptop
 
 There is two home configurations depending on what machine is used: desktop or laptop. This is reflected in the configuration name by template `"{user}@{machine_type}"`.
 
-The main difference between these configurations is using Linux distributive. My desktop have NixOS, but my laptop have Arch Linux that needs additional configurations like wrapping needed packages by `nixGL`. Pick the confugiration carefully.
+The main difference between these configurations is using Linux distributive. My desktop have NixOS, but my laptop have Arch Linux that needs additional configurations like wrapping needed packages by `nixGL`. And because of this be careful with picking and tweaking these configuratoin. For instance, you can tweak the laptop configuration with making it as suitabl for NixOS.
 
 #### Activate configuration
 
@@ -75,7 +77,7 @@ $ home-manager switch --flake .{your_user}@{machine_type}
 
 This configuration was made perfectly for my machine and may not suit your. At this point I list here the potential changes that you can made:
 
-- niri configuration (e.g. languages) — `home/configuration/niri`
+- niri configuration — `home/configuration/niri`
 - theme configuratoin — `home/configuration/theming`
 - waybar configuration - `home/configuration/waybar`
 
