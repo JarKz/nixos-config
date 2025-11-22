@@ -1,8 +1,8 @@
 { nixGL, ... }:
 {
   nixpkgs.config.allowUnfree = true;
-  nixGL.packages = nixGL.packages;
-  nixGL.vulkan.enable = true;
+  targets.genericLinux.nixGL.packages = nixGL.packages;
+  targets.genericLinux.nixGL.vulkan.enable = true;
 
   imports = [
     ./configs

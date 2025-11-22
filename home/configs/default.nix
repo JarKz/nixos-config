@@ -5,8 +5,6 @@ let
     XDG_SESSION_TYPE = "wayland";
     QT_QPA_PLATFORM = "wayland";
 
-    # For XWayland application is urgent
-    DISPLAY = ":0";
     # Fixes java-based applications like IntelliJ
     _JAVA_AWT_WM_NONREPARENTING = "1";
 
@@ -31,7 +29,7 @@ in
     ./zsh.nix
     ./fastfetch.nix
     ./swww.nix
-    ./xwayland-satellite.nix
+    # ./xwayland-satellite.nix
     ./xdg-portals.nix
     ./browsers.nix
     ./obs.nix
