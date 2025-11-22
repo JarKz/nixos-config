@@ -22,6 +22,10 @@ let
     playerctl = "${playerctl}/bin/playerctl";
     lc-niri = "${flake-pkgs.lc-niri.default}/bin/lc-niri";
 
+    layouts = machineSpecs.keyboard.layouts;
+    variants = machineSpecs.keyboard.variants;
+    options = machineSpecs.keyboard.options;
+
     mainOutput = ''
       output "${machineSpecs.outputs.main.name}" {
         mode "${machineSpecs.outputs.main.width}x${machineSpecs.outputs.main.height}@${machineSpecs.outputs.main.framerate}"

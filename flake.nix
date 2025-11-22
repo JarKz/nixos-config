@@ -54,6 +54,7 @@
 
       desktopSpecs = builtins.fromTOML (builtins.readFile ./specs/desktop.toml);
       laptopSpecs = builtins.fromTOML (builtins.readFile ./specs/laptop.toml);
+      laptopNoSplitKbSpecs = builtins.fromTOML (builtins.readFile ./specs/laptop-no-split-kb.toml);
     in
     {
       nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
@@ -108,6 +109,18 @@
               extraSpecialArgs = {
                 username = "jarkz";
                 machineSpecs = laptopSpecs;
+                overlays = defaultOverlays;
+
+                inherit nixGL flake-pkgs tools misc;
+              };
+              modules = defaultModules;
+            };
+          "jarkz@laptop-no-split-kb" =
+            home-manager.lib.homeManagerConfiguration {
+              pkgs = pkgs;
+              extraSpecialArgs = {
+                username = "jarkz";
+                machineSpecs = laptopNoSplitKbSpecs;
                 overlays = defaultOverlays;
 
                 inherit nixGL flake-pkgs tools misc;

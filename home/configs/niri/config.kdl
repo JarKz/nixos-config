@@ -16,9 +16,9 @@ environment {
 input {
     keyboard {
         xkb {
-            layout "us,ru,by"
-            variant "colemak,diktor,"
-            options "compose:rctrl,caps:swapescape"
+            layout "{{ layouts }}"
+            variant "{{ variants }}"
+            options "{{ options }}"
         }
     }
 
