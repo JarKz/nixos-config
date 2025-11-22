@@ -43,6 +43,11 @@
       url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    wayland-pipewire-idle-inhibit = {
+      url = "github:rafaelrc7/wayland-pipewire-idle-inhibit";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ { nixpkgs, home-manager, ... }:
@@ -86,6 +91,7 @@
             inputs.noti-flake.homeModules.default
             inputs.zen-browser.homeModules.twilight
             inputs.catppuccin.homeModules.default
+            inputs.wayland-pipewire-idle-inhibit.homeModules.default
             ./home
           ];
 

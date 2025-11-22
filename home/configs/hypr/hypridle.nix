@@ -45,4 +45,10 @@ in
       ];
     };
   };
+
+  # For some reason, the idle manager don't see any audio/video playing and it causes unpleasant experience like locking the screen during video watching.
+  # So, to avoid it, need to use pipewire inhibitor that tells idle manager to not perform an action if any audio/video is playing.
+  services.wayland-pipewire-idle-inhibit = {
+    enable = true;
+  };
 }
