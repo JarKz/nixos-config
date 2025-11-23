@@ -19,6 +19,6 @@ transform = "normal"
 offset = { x = "-1920", y = "0" }
 
 [keyboard]
-layouts = "en,ru,by"
+layouts = "us,ru,by"
 variants = "colemak,diktor,diktor"
 options = "compose:rctrl,caps:swapescape"
