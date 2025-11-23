@@ -17,3 +17,9 @@ scale = "1"
 framerate = "60.000"
 transform = "270"
 offset = { x = "3440", y = "-300" }
+
+
+[keyboard]
+layouts = "en,ru,by"
+variants = ""
+options = "compose:rctrl"
