@@ -20,5 +20,5 @@ offset = { x = "-1920", y = "0" }
 
 [keyboard]
 layouts = "us,ru,by"
-variants = "colemak,diktor,diktor"
+variants = "colemak,diktor,"
 options = "compose:rctrl,caps:swapescape"
