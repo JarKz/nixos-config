@@ -34,6 +34,10 @@ input {
     }
 }
 
+hotkey-overlay {
+  hide-not-bound
+}
+
 {{ mainOutput }}
 
 {{ secondaryOutput }}
