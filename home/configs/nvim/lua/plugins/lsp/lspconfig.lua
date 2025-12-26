@@ -78,6 +78,9 @@ return {
 
   opts = {
     servers = {
+      tinymist = {
+        cmd = { "{{ tinymist }}" },
+      },
       pyright = {
         cmd = { "{{ pyright-langserver }}", "--stdio" },
       },

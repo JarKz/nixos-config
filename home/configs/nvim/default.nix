@@ -16,6 +16,7 @@ let
 
   vocabulary = with pkgs; {
     clangd = "${llvmPackages_21.clang-tools}/bin/clangd";
+    tinymist = "${tinymist}/bin/tinymist";
     pyright-langserver = "${pyright}/bin/pyright-langserver";
     vscode-css-language-server = "${vscode-langservers-extracted}/bin/vscode-css-language-server";
     vscode-html-language-server = "${vscode-langservers-extracted}/bin/vscode-html-language-server";
