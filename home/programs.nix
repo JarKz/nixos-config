@@ -12,7 +12,9 @@
     kdePackages.filelight
     kdePackages.dolphin
 
-    # yandex-music
+    onlyoffice-desktopeditors
+
+    yandex-music
     pavucontrol
     blueman
     fim
