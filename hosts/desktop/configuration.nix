@@ -58,5 +58,15 @@
     };
   };
 
+  virtualisation.docker = {
+    enable = true;
+
+    # We cannot use minikube with rootless docker. That's sad.
+    # rootless = {
+    #   enable = true;
+    #   setSocketVariable = true;
+    # };
+  };
+
   system.stateVersion = "25.05";
 }
