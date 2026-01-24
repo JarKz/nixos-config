@@ -56,6 +56,9 @@
 
   "tray": {
     "spacing": 10,
+    "icons": {
+      "steam": "steam"
+    }
   },
 
   "pulseaudio": {
