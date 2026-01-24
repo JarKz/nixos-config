@@ -1,7 +1,7 @@
 is-not-nixos = false
 
 [outputs.main]
-name = "DP-2"
+name = "DP-1"
 width = "3440"
 height = "1440"
 scale = "1"
@@ -10,7 +10,7 @@ transform = "normal"
 offset = { x = "0", y = "0" }
 
 [outputs.secondary]
-name = "HDMI-A-1"
+name = "HDMI-A-2"
 width = "1920"
 height = "1080"
 scale = "1"

@@ -11,8 +11,9 @@
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
-  boot.kernelPackages = pkgs.linuxPackages_6_6;
-  boot.kernelModules = [ "kvm-intel" ];
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelModules = [ "kvm-amd" "k10temp" ];
+  boot.blacklistedKernelModules = [ "usblp" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
@@ -34,6 +35,27 @@
       fsType = "btrfs";
     };
 
+  fileSystems."/disks/wd_blue" =
+    {
+      device = "/dev/disk/by-uuid/828c72af-2634-4eea-a9c4-4320f2c8878c";
+      fsType = "btrfs";
+      options = [ "subvolid=5" "noatime" ];
+    };
+
+  fileSystems."/disks/wd_blue/games" =
+    {
+      device = "/dev/disk/by-uuid/828c72af-2634-4eea-a9c4-4320f2c8878c";
+      fsType = "btrfs";
+      options = [ "subvol=games" "compress=zstd:3" "noatime" ];
+    };
+
+  fileSystems."/disks/wd_blue/video" =
+    {
+      device = "/dev/disk/by-uuid/828c72af-2634-4eea-a9c4-4320f2c8878c";
+      fsType = "btrfs";
+      options = [ "subvol=video" "nodatacow" "noatime" ];
+    };
+
   swapDevices = [{
     device = "/var/lib/swapfile";
     size = 20 * 1024;
@@ -42,7 +64,7 @@
   networking.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
   hardware.enableRedistributableFirmware = true;
   hardware.enableAllFirmware = true;
