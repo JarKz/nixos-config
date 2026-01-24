@@ -32,6 +32,7 @@ in
     ./xdg-portals.nix
     ./browsers.nix
     ./obs.nix
+    ./espanso.nix
 
     ./ideavim
     ./hypr
