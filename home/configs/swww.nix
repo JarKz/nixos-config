@@ -5,6 +5,7 @@
   systemd.user.services.swww-wallpaper = {
     Unit = {
       Description = "Set wallpapers with swww";
+      ConditionEnvironment="WAYLAND_DISPLAY";
       After = [ "swww.service" ];
       PartOf = [ config.wayland.systemd.target ];
     };

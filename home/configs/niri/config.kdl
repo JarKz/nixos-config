@@ -120,6 +120,7 @@ window-rule {
 window-rule {
   match app-id="com.gabm.satty" title="satty"
   match app-id="org.telegram.desktop" title="Media viewer"
+  match app-id="mpv" // any videoplayer must be opened in full screen
   open-fullscreen true
 }
 

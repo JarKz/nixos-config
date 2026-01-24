@@ -115,6 +115,10 @@ window#waybar {
   color: #aab1d3;
 }
 
+#tray {
+  padding: 0 5px;
+}
+
 #pulseaudio {
   margin-top: 5px;
   margin-bottom: 5px;

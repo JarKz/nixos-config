@@ -83,6 +83,8 @@ in
         ];
 
         modules-right = [
+          "tray"
+          "custom/filler"
           "battery"
           "custom/filler"
           "upower"

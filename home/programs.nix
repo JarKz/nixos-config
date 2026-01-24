@@ -10,14 +10,17 @@
 
   home.packages = with pkgs; [
     kdePackages.filelight
-    kdePackages.dolphin
+    nemo-with-extensions
+    nemo-fileroller # For archive actions
+    webp-pixbuf-loader # For preview
 
     onlyoffice-desktopeditors
 
     yandex-music
     pavucontrol
     blueman
-    fim
+    loupe
+    bruno
 
     discord
     materialgram
@@ -33,7 +36,6 @@
   ];
 
   programs = {
-    mpv.enable = true;
     ghostty = {
       enable = true;
       package = if machineSpecs.is-not-nixos then config.lib.nixGL.wrap pkgs.ghostty else pkgs.ghostty;

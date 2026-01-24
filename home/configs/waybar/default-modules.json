@@ -20,6 +20,9 @@
     "max-length": 10,
     "on-click-right": "{{ wezterm }} start -- {{ btop }}"
   },
+  "temperature": {
+    "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+  },
   "disk": {
     "path": "/home",
     "interval": 1,
@@ -49,6 +52,10 @@
       "active": "",
       "default": ""
     }
+  },
+
+  "tray": {
+    "spacing": 10,
   },
 
   "pulseaudio": {
@@ -83,7 +90,7 @@
 
   "upower": {
     "format": "Ergo - {percentage}",
-    "native-path": "/org/bluez/hci0/dev_E2_DF_3B_67_6E_A7",
+    "native-path": "/org/bluez/hci1/dev_E2_DF_3B_67_6E_A7",
     "icon-size": 20,
     "hide-if-empty": true,
     "tooltip": true,

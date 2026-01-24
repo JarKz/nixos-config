@@ -29,10 +29,12 @@ in
     ./zsh.nix
     ./fastfetch.nix
     ./swww.nix
-    ./xdg-portals.nix
+    ./xdg.nix
     ./browsers.nix
     ./obs.nix
     ./espanso.nix
+    ./mpv.nix
+    ./zathura.nix
 
     ./ideavim
     ./hypr
