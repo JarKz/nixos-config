@@ -18,8 +18,16 @@
 
   fileSystems."/" =
     {
-      device = "/dev/disk/by-uuid/3ec06060-b113-4b3f-b5e4-ad21156c9f0a";
+      device = "/dev/disk/by-label/LINUX_POOL";
       fsType = "btrfs";
+      options = [ "subvol=@nixos" "compress=zstd" "noatime" ];
+    };
+
+  fileSystems."/nix" =
+    {
+      device = "/dev/disk/by-label/LINUX_POOL";
+      fsType = "btrfs";
+      options = [ "subvol=@nix" "compress=zstd" "noatime" ];
     };
 
   fileSystems."/boot/efi" =
@@ -31,8 +39,9 @@
 
   fileSystems."/home" =
     {
-      device = "/dev/disk/by-uuid/1a34efa0-d48f-4a53-b52f-6334c01a53c2";
+      device = "/dev/disk/by-label/LINUX_POOL";
       fsType = "btrfs";
+      options = [ "subvol=@home" "compress=zstd" "noatime" ];
     };
 
   fileSystems."/disks/wd_blue" =
