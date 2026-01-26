@@ -25,5 +25,8 @@
 
   networking.hostName = "desktop";
 
+  # Hardware-specific services
+  services.hardware.deepcool-digital-linux.enable = true;
+
   system.stateVersion = "25.05";
 }
