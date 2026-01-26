@@ -35,6 +35,7 @@ in
     ./espanso.nix
     ./mpv.nix
     ./zathura.nix
+    ./thunderbird.nix
 
     ./ideavim
     ./hypr

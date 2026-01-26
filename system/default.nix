@@ -28,7 +28,6 @@
 
   programs = {
     niri.enable = true;
-    thunderbird.enable = true;
     steam.enable = true;
 
     gnupg.agent = {
