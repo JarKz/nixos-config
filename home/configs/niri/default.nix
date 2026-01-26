@@ -55,7 +55,7 @@ in
     wl-clipboard
     playerctl
     flake-pkgs.lc-niri.default
-    flake-pkgs.xwayland-satellite.default # To enable XWayland
+    xwayland-satellite
   ];
 
   xdg.configFile."niri/config.kdl".text = tools.templateConfig ./config.kdl vocabulary;

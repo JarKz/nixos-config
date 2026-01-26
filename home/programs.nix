@@ -1,7 +1,5 @@
 {
-  config,
   pkgs,
-  machineSpecs,
   overlays,
   ...
 }:
@@ -36,10 +34,6 @@
   ];
 
   programs = {
-    ghostty = {
-      enable = true;
-      package = if machineSpecs.is-not-nixos then config.lib.nixGL.wrap pkgs.ghostty else pkgs.ghostty;
-    };
     element-desktop.enable = true;
   };
 }

@@ -1,9 +1,6 @@
-{ ... }: {
+{ pkgs, ... }: {
   programs.librewolf = {
     enable = true;
-  };
-
-  programs.zen-browser = {
-    enable = true;
+    package = pkgs.librewolf-bin;
   };
 }

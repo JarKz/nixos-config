@@ -19,11 +19,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    zen-browser = {
-      url = "github:0xc000022070/zen-browser-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     noti-flake = {
       url = "github:jarkz/noti-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -31,11 +26,6 @@
 
     lc-niri = {
       url = "github:jarkz/layout-carousel-niri";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    xwayland-satellite = {
-      url = "github:Supreeeme/xwayland-satellite";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -78,7 +68,6 @@
             rust-overlay = inputs.rust-overlay;
           };
           flake-pkgs = {
-            xwayland-satellite = inputs.xwayland-satellite.packages."${system}";
             lc-niri = inputs.lc-niri.packages."${system}";
           };
           tools = {
@@ -89,7 +78,6 @@
 
           defaultModules = [
             inputs.noti-flake.homeModules.default
-            inputs.zen-browser.homeModules.twilight
             inputs.catppuccin.homeModules.default
             inputs.wayland-pipewire-idle-inhibit.homeModules.default
             ./home
