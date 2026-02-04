@@ -42,7 +42,7 @@ window#waybar {
 
 #cpu,
 #memory,
-#temperature {
+#disk {
   margin-top: 5px;
   margin-bottom: 5px;
   border-radius: 5px;
@@ -57,15 +57,7 @@ window#waybar {
   color: @green;
 }
 
-#temperature {
-  color: @blue;
-}
-
 #disk {
-  color: @rosewater;
-}
-
-#custom-blueberry {
   color: @blue;
 }
 
@@ -80,43 +72,43 @@ window#waybar {
 }
 
 #workspaces button:nth-child(1) label {
-  color: #8aadf4;
+  color: @blue;
 }
 
 #workspaces button:nth-child(2) label {
-  color: #ed8796;
+  color: @red;
 }
 
 #workspaces button:nth-child(3) label {
-  color: #a6da95;
+  color: @green;
 }
 
 #workspaces button:nth-child(4) label {
-  color: #c6a0f6;
+  color: @yellow;
 }
 
 #workspaces button:nth-child(5) label {
-  color: #f4dbd6;
+  color: @pink;
 }
 
 #workspaces button:nth-child(6) label {
-  color: #f5a97f;
+  color: @teal;
 }
 
 #workspaces button:nth-child(7) label {
-  color: #8bd5ca;
+  color: @rosewater;
 }
 
 #workspaces button:nth-child(8) label {
-  color: #68b0d6;
+  color: @lavender;
 }
 
 #workspaces button:nth-child(9) label {
-  color: #aab1d3;
+  color: @peach;
 }
 
 #tray {
-  padding: 0 10px;
+  padding: 0 10px 0 4px;
 }
 
 #tray > .passive {

@@ -19,6 +19,20 @@ let
 in
 {
   xdg = {
+    desktopEntries = {
+      btop = {
+        name = "Btop (WezTerm)";
+        genericName = "System Monitor";
+        exec = "wezterm start --class=\"btop-monitor\" -e ${pkgs.btop}/bin/btop";
+        icon = "btop";
+        terminal = false;
+        categories = [
+          "System"
+          "Monitor"
+        ];
+      };
+    };
+
     mimeApps = {
       enable = true;
 

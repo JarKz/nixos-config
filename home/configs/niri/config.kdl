@@ -129,6 +129,58 @@ window-rule {
     clip-to-geometry true
 }
 
+// WORKSPACES
+
+workspace "main" {
+  open-on-output "{{ mainOutputName }}"
+}
+
+workspace "work" {
+  open-on-output "{{ mainOutputName }}"
+}
+
+// TODO: need to add JetBrains applications and other which is suitable to work
+// window-rule {
+//   open-on-workspace "work"
+// }
+
+workspace "social" {
+  open-on-output "{{ secondaryOutputName }}"
+}
+
+window-rule {
+  match app-id="org.telegram.desktop"
+  match app-id="io.github.kukuruzka165.materialgram"
+  match app-id="discord"
+  match app-id="Element"
+
+  open-on-workspace "social"
+}
+
+workspace "info" {
+  open-on-output "{{ secondaryOutputName }}"
+}
+
+window-rule {
+  match app-id="btop-monitor"
+
+  open-fullscreen true
+  open-focused true
+  open-on-workspace "info"
+}
+
+workspace "game" {
+  open-on-output "{{ mainOutputName }}"
+}
+
+window-rule {
+  match app-id="steam"
+  match app-id="dota2"
+  exclude title=r#"^notificationtoasts_\d+_desktop$"#
+
+  open-on-workspace "game"
+}
+
 binds {
     Mod+F hotkey-overlay-title="Enter into <b>Focus</b> mode" { spawn "{{ wlr-which-key }}" "focus"; }
     Mod+M hotkey-overlay-title="Enter into <b>Move</b> mode"  { spawn "{{ wlr-which-key }}" "move"; }

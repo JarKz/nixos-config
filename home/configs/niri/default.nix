@@ -45,6 +45,9 @@ let
         position x=${machineSpecs.outputs.secondary.offset.x} y=${machineSpecs.outputs.secondary.offset.y}
       }
     '';
+
+    mainOutputName = machineSpecs.outputs.main.name;
+    secondaryOutputName = machineSpecs.outputs.secondary.name;
   };
 in
 {

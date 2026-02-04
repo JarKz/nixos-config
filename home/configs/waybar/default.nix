@@ -71,11 +71,9 @@ in
           "custom/separator"
           "cpu"
           "memory"
-          "temperature"
-          "custom/filler"
           "disk"
           "custom/filler"
-          "custom/blueberry"
+          "tray"
         ];
 
         modules-center = [
@@ -83,11 +81,7 @@ in
         ];
 
         modules-right = [
-          "tray"
-          "custom/filler"
           "battery"
-          "custom/filler"
-          "upower"
           "custom/filler"
           "pulseaudio"
           "custom/filler"
@@ -106,11 +100,9 @@ in
           "custom/separator"
           "cpu"
           "memory"
-          "temperature"
-          "custom/filler"
           "disk"
           "custom/filler"
-          "custom/blueberry"
+          "tray"
         ];
 
         modules-center = [
