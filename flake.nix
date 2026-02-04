@@ -60,6 +60,14 @@
         ];
       };
 
+      nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
+        inherit system;
+        inherit specialArgs;
+        modules = [
+          ./hosts/laptop/configuration.nix
+        ];
+      };
+
       homeConfigurations =
         let
           pkgs = nixpkgs.legacyPackages."${system}";
