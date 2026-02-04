@@ -56,8 +56,6 @@ let
       "efm-langserver";
 in
 {
-  nixpkgs.overlays = [ overlays.rust-overlay.overlays.default ];
-
   # Only for cargo to build blink.cmp
   home.file.".local/nightly-rust".source = pkgs.rust-bin.nightly."2025-07-27".minimal;
 

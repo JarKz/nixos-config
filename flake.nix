@@ -66,6 +66,12 @@
           nixGL = inputs.nixGL;
           defaultOverlays = {
             rust-overlay = inputs.rust-overlay;
+            btop-overlay = (self: super: {
+              btop = super.btop.override {
+                cudaSupport = true;
+                rocmSupport = true;
+              };
+            });
           };
           flake-pkgs = {
             lc-niri = inputs.lc-niri.packages."${system}";

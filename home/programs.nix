@@ -4,7 +4,7 @@
   ...
 }:
 {
-  nixpkgs.overlays = [ overlays.rust-overlay.overlays.default ];
+  nixpkgs.overlays = [ overlays.rust-overlay.overlays.default overlays.btop-overlay ];
 
   home.packages = with pkgs; [
     kdePackages.filelight
