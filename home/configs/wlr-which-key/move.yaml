@@ -1,12 +1,13 @@
-# Theming
+---
 font: JetBrainsMono Nerd Font 14
-background: "#282828d0"
-color: "#ffffff"
-border: "#7fc8ff"
+background: "#EFF1F5d0"
+color: "#4C4F69"
+border: "#7287FD"
 separator: " ➜ "
 border_width: 3
 corner_r: 2
 padding: 15
+rows_per_column: 10
 column_padding: 25
 
 # One of center, left, right, top, bottom, bottom-left, top-left, etc.
@@ -101,6 +102,27 @@ menu:
     keep_open: true
     desc: Move the focused column to workspace 9
     cmd: niri msg action move-column-to-workspace 9
+
+  - key: ["Alt+m"]
+    keep_open: true
+    desc: Move the focused column to Main workspace
+    cmd: niri msg action move-column-to-workspace "main"
+  - key: ["Alt+w"]
+    keep_open: true
+    desc: Move the focused column to Work workspace
+    cmd: niri msg action move-column-to-workspace "work"
+  - key: ["Alt+g"]
+    keep_open: true
+    desc: Move the focused column to Game workspace
+    cmd: niri msg action move-column-to-workspace "game"
+  - key: ["Alt+s"]
+    keep_open: true
+    desc: Move the focused column to Social workspace
+    cmd: niri msg action move-column-to-workspace "social"
+  - key: ["Alt+i"]
+    keep_open: true
+    desc: Move the focused column to Info workspace
+    cmd: niri msg action move-column-to-workspace "info"
 
   - key: ["w"]
     desc: Use workspace movements

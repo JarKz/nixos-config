@@ -1,8 +1,8 @@
-# Theming
+---
 font: JetBrainsMono Nerd Font 14
-background: "#282828d0"
-color: "#ffffff"
-border: "#7fc8ff"
+background: "#EFF1F5d0"
+color: "#4C4F69"
+border: "#7287FD"
 separator: " ➜ "
 border_width: 3
 corner_r: 2
@@ -11,7 +11,8 @@ rows_per_column: 5 # No limit by default
 column_padding: 25 # Defaults to padding
 
 # Anchor and margin
-anchor: bottom # One of center, left, right, top, bottom, bottom-left, top-left, etc.
+anchor: bottom
+# One of center, left, right, top, bottom, bottom-left, top-left, etc.
 # Only relevant when anchor is not center
 margin_right: 0
 margin_bottom: 30
