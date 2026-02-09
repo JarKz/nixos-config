@@ -62,7 +62,16 @@
     {
       device = "/dev/disk/by-uuid/828c72af-2634-4eea-a9c4-4320f2c8878c";
       fsType = "btrfs";
-      options = [ "subvol=video" "nodatacow" "noatime" ];
+      options = [ "subvol=video" "noatime" ];
+    };
+
+  # FHS bypass for steam to make the Steam VideoPlayer available to play backrgound recordings
+  # Context: FHS doesn't treat /disks as "safe" path, so it declines in Steam Web Helper.
+  fileSystems."/home/jarkz/Videos/Steam Background Recordings" =
+    {
+      device = "/disks/wd_blue/video/Steam Background Recordings";
+      fsType = "btrfs";
+      options = [ "bind" ];
     };
 
   swapDevices = [{
