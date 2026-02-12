@@ -5,7 +5,7 @@
 
   users.users.jarkz = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "audio" "docker" "input" ];
+    extraGroups = [ "wheel" "audio" "docker" "input" "kvm" ];
     shell = pkgs.zsh;
   };
 

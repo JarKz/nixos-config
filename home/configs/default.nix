@@ -3,7 +3,7 @@ let
   sessionVariables = {
     XDG_CONFIG_HOME = "$HOME/.config";
     XDG_SESSION_TYPE = "wayland";
-    QT_QPA_PLATFORM = "wayland";
+    QT_QPA_PLATFORM = "wayland;xcb";
 
     # Fixes java-based applications like IntelliJ
     _JAVA_AWT_WM_NONREPARENTING = "1";
@@ -36,6 +36,7 @@ in
     ./mpv.nix
     ./zathura.nix
     ./thunderbird.nix
+    ./android-studio.nix
 
     ./ideavim
     ./hypr

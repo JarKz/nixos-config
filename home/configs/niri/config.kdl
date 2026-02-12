@@ -1,6 +1,6 @@
 environment {
     XDG_SESSION_TYPE "wayland"
-    QT_QPA_PLATFORM "wayland"
+    QT_QPA_PLATFORM "wayland;xcb"
 
     // Fixes java-based applications like IntelliJ
     _JAVA_AWT_WM_NONREPARENTING "1"
