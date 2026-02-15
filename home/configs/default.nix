@@ -2,6 +2,7 @@
 let
   sessionVariables = {
     XDG_CONFIG_HOME = "$HOME/.config";
+    XDG_DATA_HOME = "$HOME/.local/share";
     XDG_SESSION_TYPE = "wayland";
     QT_QPA_PLATFORM = "wayland;xcb";
 
