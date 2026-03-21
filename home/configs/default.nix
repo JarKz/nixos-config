@@ -22,6 +22,8 @@ in
   home.homeDirectory = "/home/${username}";
 
   imports = [
+    ./fonts.nix
+
     ./ssh-agent.nix
     ./git.nix
     ./bat.nix
