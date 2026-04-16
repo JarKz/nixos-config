@@ -40,6 +40,7 @@ in
     ./zathura.nix
     ./thunderbird.nix
     ./android-studio.nix
+    ./mangohud.nix
 
     ./ideavim
     ./hypr

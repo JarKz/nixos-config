@@ -15,6 +15,13 @@
   boot.kernelModules = [ "kvm-amd" "k10temp" ];
   boot.blacklistedKernelModules = [ "usblp" ];
   boot.extraModulePackages = [ ];
+  boot.kernelParams = [
+    "amd_pstate=active"
+    "mitigations=off"
+    "processor.max_cstate=1"
+    "idle=nowait"
+    "amdgpu.ppfeaturemask=0xffffffff"
+  ];
 
   fileSystems."/" =
     {

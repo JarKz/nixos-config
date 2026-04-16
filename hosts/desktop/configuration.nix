@@ -28,5 +28,10 @@
   # Hardware-specific services
   services.hardware.deepcool-digital-linux.enable = true;
 
+  services.scx = {
+    enable = true;
+    scheduler = "scx_rusty";
+  };
+
   system.stateVersion = "25.05";
 }
