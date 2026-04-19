@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 {
   home.packages = [
     pkgs.nwg-look
@@ -23,4 +23,6 @@
       name = "Papirus-Light";
     };
   };
+
+  gtk.gtk4.theme = config.gtk.theme;
 }

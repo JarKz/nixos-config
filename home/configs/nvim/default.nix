@@ -62,6 +62,8 @@ in
   programs.neovim = {
     enable = true;
     defaultEditor = true;
+    withRuby = false;
+    withPython3 = true;
 
     initLua = builtins.readFile ./init.lua;
     extraLuaPackages =

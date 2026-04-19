@@ -1,18 +1,18 @@
 { config, misc, pkgs, machineSpecs, ... }:
 {
-  services.swww.enable = true;
+  services.awww.enable = true;
 
-  systemd.user.services.swww-wallpaper = {
+  systemd.user.services.awww-wallpaper = {
     Unit = {
-      Description = "Set wallpapers with swww";
+      Description = "Set wallpapers with awww";
       ConditionEnvironment="WAYLAND_DISPLAY";
-      After = [ "swww.service" ];
+      After = [ "awww.service" ];
       PartOf = [ config.wayland.systemd.target ];
     };
     Service = {
       Type = "oneshot";
-      ExecStartPre = "${pkgs.swww}/bin/swww img ${misc.background-images.ghost-of-thusima} --outputs ${machineSpecs.outputs.main.name}";
-      ExecStart = "${pkgs.swww}/bin/swww img ${misc.background-images.melina} --outputs ${machineSpecs.outputs.secondary.name}";
+      ExecStartPre = "${pkgs.awww}/bin/awww img ${misc.background-images.ghost-of-thusima} --outputs ${machineSpecs.outputs.main.name}";
+      ExecStart = "${pkgs.awww}/bin/awww img ${misc.background-images.melina} --outputs ${machineSpecs.outputs.secondary.name}";
     };
     Install = {
       WantedBy = [ "default.target" ];
