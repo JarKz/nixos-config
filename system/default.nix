@@ -29,6 +29,7 @@
   programs = {
     niri.enable = true;
     steam.enable = true;
+    dconf.enable = true;
 
     gnupg.agent = {
       enable = true;

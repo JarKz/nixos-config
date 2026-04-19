@@ -41,6 +41,7 @@ in
     ./thunderbird.nix
     ./android-studio.nix
     ./mangohud.nix
+    ./easy-effects.nix
 
     ./ideavim
     ./hypr

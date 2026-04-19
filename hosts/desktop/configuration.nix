@@ -27,6 +27,8 @@
 
   # Hardware-specific services
   services.hardware.deepcool-digital-linux.enable = true;
+  nixpkgs.config.rocmSupport = true;
+  hardware.amdgpu.opencl.enable = true;
 
   services.scx = {
     enable = true;
