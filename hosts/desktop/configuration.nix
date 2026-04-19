@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, lib, ... }:
 {
   nixpkgs.config.allowUnfree = true;
   nix.settings.experimental-features = [
@@ -29,10 +29,25 @@
   services.hardware.deepcool-digital-linux.enable = true;
   nixpkgs.config.rocmSupport = true;
   hardware.amdgpu.opencl.enable = true;
+  hardware.graphics.extraPackages = lib.mkBefore (
+    with pkgs;
+    [
+      rocmPackages.clr.icd
+    ]
+  );
 
   services.scx = {
     enable = true;
     scheduler = "scx_rusty";
+  };
+
+  services.ollama = {
+    enable = true;
+    package = pkgs.ollama-rocm;
+
+    environmentVariables = {
+      HSA_OVERRIDE_GFX_VERSION = "11.0.0";
+    };
   };
 
   system.stateVersion = "25.05";
