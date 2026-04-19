@@ -177,6 +177,7 @@ window-rule {
   match app-id="steam"
   match app-id="dota2"
   match app-id="Hollow Knight Silksong"
+  match title="Cyberpunk 2077 (C) 2020 by CD Projekt RED"
   exclude title=r#"^notificationtoasts_\d+_desktop$"#
 
   open-on-workspace "game"
