@@ -8,7 +8,7 @@
   };
 
   services.pipewire.wireplumber.extraConfig = {
-    "10-disable-suspend" = {
+    "10-sennheiser-stability" = {
       "monitor.alsa.rules" = [
         {
           matches = [
@@ -19,6 +19,12 @@
           actions = {
             update-props = {
               "session.suspend-on-idle" = false;
+
+              "api.alsa.disable-mmap" = true;
+              "api.alsa.headroom" = 1024;
+              "api.alsa.period-size" = 512;
+              "api.alsa.period-num" = 4;
+
               "device.fixed-profile" = true;
               "api.alsa.disable-batch" = true;
               "channelmix.disable" = false;
@@ -33,8 +39,8 @@
     "context.properties" = {
       "default.clock.rate" = 48000;
       "default.clock.quantum" = 1024;
-      "default.clock.min-quantum" = 512;
-      "default.clock.max-quantum" = 4048;
+      "default.clock.min-quantum" = 1024;
+      "default.clock.max-quantum" = 4096;
     };
   };
 
