@@ -21,11 +21,7 @@ The current structure of configuration based on standard for 'lazy.nvim' plugin:
 
 ## First start
 
-When you initially starts Neovim, you must wait becuase plugins, `treesitter`parsers and `Mason` packages is installing. You can check status of installations:
-
-  - for `treesitter` parsers: type `:messages` and scroll down (by 'j'/'space' key);
-  - for plugins: type `:Lazy` and it pop up window with details;
-  - for `Mason`: type `:Mason` and it pop up window with list of packages and their status;
+When you initially starts Neovim, you must wait becuase plugins are installing. You can check status of installations: type `:Lazy` and it pop up window with details;
 
 If you see any errors in top-right corner, type `:Notifications` and read what is errors. Mostly it based on bad preparation, that I described in `README.md`.
 
@@ -51,6 +47,7 @@ Autocompletion:
 
   - `saghen/blink.cmp`, depends on:
       - `rafamadriz/friendly-snippets`
+      - `saghen/blink.lib`
 
 LSP:
 
@@ -70,7 +67,6 @@ DAP:
 
 Highlights:
 
-  - `nvim-treesitter/nvim-treesitter`
   - `RRethy/vim-illuminate`
 
 Extensions:

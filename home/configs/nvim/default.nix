@@ -2,7 +2,7 @@
   pkgs,
   lib,
   tools,
-  overlays,
+  flake-pkgs,
   ...
 }:
 let
@@ -54,10 +54,44 @@ let
   efmConfig =
     tools.importConfig.importTemplated efmVocabulary ./efm-langserver/config.yaml
       "efm-langserver";
+
+  tsLanguages = with pkgs.tree-sitter-grammars; [
+    tree-sitter-kotlin
+    tree-sitter-nix
+    tree-sitter-lua
+    tree-sitter-bash
+    tree-sitter-rust
+  ];
+
+  cleanTSName = lang: lib.strings.removePrefix "tree-sitter-" lang.pname;
+
+  tsQueries = builtins.listToAttrs (map (lang: {
+    name = "nvim/queries/${cleanTSName lang}";
+    value = { 
+      source = "${lang}/queries"; 
+      recursive = true; 
+    };
+  }) tsLanguages);
+
+  tsParsers = builtins.listToAttrs (map (lang: {
+    name = "nvim/parser/${cleanTSName lang}.so";
+    value = { source = "${lang}/parser"; };
+  }) tsLanguages);
 in
 {
   # Only for cargo to build blink.cmp
   home.file.".local/nightly-rust".source = pkgs.rust-bin.nightly."2025-07-27".minimal;
+
+  xdg.configFile = lib.mkMerge [
+    ftpluginConfigs
+    nvimConfigs
+    spellConfigs
+
+    efmConfig
+
+    tsParsers
+    tsQueries
+  ];
 
   programs.neovim = {
     enable = true;
@@ -84,6 +118,10 @@ in
       ripgrep
       translate-shell
       python314
+
+      # Completions
+      flake-pkgs.blink-cmp.default
+      flake-pkgs.blink-lib.default
 
       # DAP
       lldb
@@ -113,12 +151,4 @@ in
       nixpkgs-fmt
     ];
   };
-
-  xdg.configFile = lib.mkMerge [
-    ftpluginConfigs
-    nvimConfigs
-    spellConfigs
-
-    efmConfig
-  ];
 }

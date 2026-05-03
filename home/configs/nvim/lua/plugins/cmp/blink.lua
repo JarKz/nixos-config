@@ -3,9 +3,13 @@ return {
   dependencies = {
     'rafamadriz/friendly-snippets',
     "folke/lazydev.nvim",
+    "saghen/blink.lib"
   },
 
-  build = "RUSTC={{ rustc-nightly }} {{ cargo-nightly }} build --release",
+  build = function()
+    require('blink.cmp').build():wait(60000)
+  end,
+
 
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
@@ -71,6 +75,8 @@ return {
         }
       },
     },
+
+    fuzzy = { implementation = "rust" },
   },
   -- allows extending the providers array elsewhere in your config
   -- without having to redefine it

@@ -38,6 +38,16 @@
       url = "github:rafaelrc7/wayland-pipewire-idle-inhibit";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    blink-cmp = {
+      url = "github:saghen/blink.cmp";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    blink-lib = {
+      url = "github:saghen/blink.lib";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ { nixpkgs, home-manager, ... }:
@@ -83,6 +93,8 @@
           };
           flake-pkgs = {
             lc-niri = inputs.lc-niri.packages."${system}";
+            blink-cmp = inputs.blink-cmp.packages."${system}";
+            blink-lib = inputs.blink-lib.packages."${system}";
           };
           tools = {
             importConfig = import ./tools/import-config.nix;

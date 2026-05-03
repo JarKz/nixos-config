@@ -171,8 +171,9 @@ return {
       return count
     end
 
+    local blink_cmp = require('blink.cmp')
     for server, config in pairs(opts.servers) do
-      config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
+      config.capabilities = blink_cmp.get_lsp_capabilities(config.capabilities)
       config.capabilities.textDocument.foldingRange = {
         dynamicRegistration = false,
         lineFoldingOnly = true,
