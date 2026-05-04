@@ -19,8 +19,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    noti-flake = {
-      url = "github:jarkz/noti-flake";
+    noti-rs = {
+      url = "github:noti-rs/noti/gpu";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -50,7 +50,8 @@
     };
   };
 
-  outputs = inputs @ { nixpkgs, home-manager, ... }:
+  outputs =
+    inputs@{ nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
       specialArgs = {
@@ -84,12 +85,14 @@
           nixGL = inputs.nixGL;
           defaultOverlays = {
             rust-overlay = inputs.rust-overlay;
-            btop-overlay = (self: super: {
-              btop = super.btop.override {
-                cudaSupport = true;
-                rocmSupport = true;
-              };
-            });
+            btop-overlay = (
+              self: super: {
+                btop = super.btop.override {
+                  cudaSupport = true;
+                  rocmSupport = true;
+                };
+              }
+            );
           };
           flake-pkgs = {
             lc-niri = inputs.lc-niri.packages."${system}";
@@ -103,7 +106,7 @@
           misc = import ./misc;
 
           defaultModules = [
-            inputs.noti-flake.homeModules.default
+            inputs.noti-rs.homeModules.default
             inputs.catppuccin.homeModules.default
             inputs.wayland-pipewire-idle-inhibit.homeModules.default
             ./home
@@ -111,43 +114,54 @@
 
         in
         {
-          "jarkz@desktop" =
-            home-manager.lib.homeManagerConfiguration {
-              pkgs = pkgs;
-              extraSpecialArgs = {
-                username = "jarkz";
-                machineSpecs = desktopSpecs;
-                overlays = defaultOverlays;
+          "jarkz@desktop" = home-manager.lib.homeManagerConfiguration {
+            pkgs = pkgs;
+            extraSpecialArgs = {
+              username = "jarkz";
+              machineSpecs = desktopSpecs;
+              overlays = defaultOverlays;
 
-                inherit nixGL flake-pkgs tools misc;
-              };
-              modules = defaultModules;
+              inherit
+                nixGL
+                flake-pkgs
+                tools
+                misc
+                ;
             };
-          "jarkz@laptop" =
-            home-manager.lib.homeManagerConfiguration {
-              pkgs = pkgs;
-              extraSpecialArgs = {
-                username = "jarkz";
-                machineSpecs = laptopSpecs;
-                overlays = defaultOverlays;
+            modules = defaultModules;
+          };
+          "jarkz@laptop" = home-manager.lib.homeManagerConfiguration {
+            pkgs = pkgs;
+            extraSpecialArgs = {
+              username = "jarkz";
+              machineSpecs = laptopSpecs;
+              overlays = defaultOverlays;
 
-                inherit nixGL flake-pkgs tools misc;
-              };
-              modules = defaultModules;
+              inherit
+                nixGL
+                flake-pkgs
+                tools
+                misc
+                ;
             };
-          "jarkz@laptop-no-split-kb" =
-            home-manager.lib.homeManagerConfiguration {
-              pkgs = pkgs;
-              extraSpecialArgs = {
-                username = "jarkz";
-                machineSpecs = laptopNoSplitKbSpecs;
-                overlays = defaultOverlays;
+            modules = defaultModules;
+          };
+          "jarkz@laptop-no-split-kb" = home-manager.lib.homeManagerConfiguration {
+            pkgs = pkgs;
+            extraSpecialArgs = {
+              username = "jarkz";
+              machineSpecs = laptopNoSplitKbSpecs;
+              overlays = defaultOverlays;
 
-                inherit nixGL flake-pkgs tools misc;
-              };
-              modules = defaultModules;
+              inherit
+                nixGL
+                flake-pkgs
+                tools
+                misc
+                ;
             };
+            modules = defaultModules;
+          };
         };
     };
 }
-
