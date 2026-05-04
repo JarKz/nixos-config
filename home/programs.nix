@@ -16,7 +16,6 @@
 
     yandex-music
     pavucontrol
-    blueman
     loupe
     bruno
 

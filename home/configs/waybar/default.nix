@@ -12,7 +12,6 @@ let
   vocabulary = with pkgs; {
     wezterm = "${wezterm}/bin/wezterm";
     filelight = "${kdePackages.filelight}/bin/filelight";
-    blueman-manager = "${blueman}/bin/blueman-manager";
     pavucontrol = "${pavucontrol}/bin/pavucontrol";
     btop = "${btop}/bin/btop";
     lc-niri = "${flake-pkgs.lc-niri.default}/bin/lc-niri";
@@ -51,10 +50,7 @@ in
     pavucontrol
     btop
     upower
-    blueman
   ];
-
-  services.blueman-applet.enable = true;
 
   programs.waybar = {
     enable = true;
