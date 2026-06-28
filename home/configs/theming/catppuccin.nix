@@ -1,7 +1,11 @@
 { ... }:
+let
+  enable = true;
+in
 {
   catppuccin = {
-    enable = true;
+    enable = enable;
+    autoEnable = enable;
     flavor = "latte";
 
     gtk.icon.enable = false;
