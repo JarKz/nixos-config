@@ -3,8 +3,8 @@
   nixpkgs.config.allowUnfree = true;
   # TEMPORARY: only for librewolf until upstream caches the build
   nixpkgs.config.permittedInsecurePackages = [
-    "librewolf-bin-150.0.2-1"
-    "librewolf-bin-unwrapped-150.0.2-1"
+    "librewolf-bin-151.0.1-2"
+    "librewolf-bin-unwrapped-151.0.1-2"
   ];
   targets.genericLinux.nixGL.packages = nixGL.packages;
   targets.genericLinux.nixGL.vulkan.enable = true;
