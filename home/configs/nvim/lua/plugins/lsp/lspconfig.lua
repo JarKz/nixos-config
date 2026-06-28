@@ -129,6 +129,14 @@ return {
       nil_ls = {
         cmd = { "{{ nil }}" }
       },
+      ltex_plus = {
+        cmd = { "{{ ltex-ls-plus }}" },
+        settings = {
+          ltex = {
+            language = "ru-RU"
+          }
+        }
+      }
     },
 
     efm = {

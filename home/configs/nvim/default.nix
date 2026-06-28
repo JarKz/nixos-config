@@ -23,6 +23,7 @@ let
     bash-language-server = "${bash-language-server}/bin/bash-language-server";
     rust-analyzer = "${rustToolchain}/bin/rust-analyzer";
     nil = "${nil}/bin/nil";
+    ltex-ls-plus = "${ltex-ls-plus}/bin/ltex-ls-plus";
     efm-langserver = "${efm-langserver}/bin/efm-langserver";
 
     lldb-dap = "${lldb}/bin/lldb-dap";
@@ -134,6 +135,7 @@ in
       bash-language-server # bashls
       vscode-langservers-extracted # html, cssls, eslint, json, markdown
       lua-language-server # lua_ls
+      ltex-ls-plus
 
       # Linters
       cppcheck

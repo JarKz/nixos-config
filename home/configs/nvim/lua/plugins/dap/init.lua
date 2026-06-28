@@ -5,7 +5,6 @@ return {
       {
         "rcarriga/nvim-dap-ui",
         dependencies = {
-          "stevearc/dressing.nvim",
           "nvim-neotest/nvim-nio",
         },
         opts = {
