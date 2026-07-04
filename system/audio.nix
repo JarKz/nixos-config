@@ -3,7 +3,8 @@
   services.pipewire = {
     enable = true;
     pulse.enable = true;
-    alsa.enable = false;
+    alsa.enable = true;
+    alsa.support32Bit = true;
     jack.enable = false;
   };
 
@@ -20,6 +21,7 @@
             update-props = {
               "session.suspend-on-idle" = false;
 
+              "api.alsa.soft-mixer" = true;
               "api.alsa.disable-mmap" = true;
               "api.alsa.headroom" = 1024;
               "api.alsa.period-size" = 512;
