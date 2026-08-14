@@ -14,8 +14,8 @@
     };
 
     theme = {
-      package = pkgs.materia-theme;
-      name = "Materia-light";
+      package = pkgs.orchis-theme;
+      name = "Orchis-Light";
     };
 
     iconTheme = {
