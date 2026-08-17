@@ -1,7 +1,7 @@
 return {
   "barreiroleo/ltex_extra.nvim",
   branch = "dev",
-  ft = { "markdown", "tex" },
+  ft = { "markdown", "tex", "typst" },
   opts = {
     ---@type string[]
     -- See https://valentjn.github.io/ltex/supported-languages.html#natural-languages

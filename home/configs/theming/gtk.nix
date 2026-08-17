@@ -14,7 +14,10 @@
     };
 
     theme = {
-      package = pkgs.orchis-theme;
+      package = pkgs.orchis-theme.override {
+        border-radius = 2;
+      };
+
       name = "Orchis-Light";
     };
 
