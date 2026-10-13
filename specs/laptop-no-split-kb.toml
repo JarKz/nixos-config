@@ -1,4 +1,4 @@
-is-not-nixos = true
+is-not-nixos = false
 
 [outputs.main]
 name = "eDP-1"
