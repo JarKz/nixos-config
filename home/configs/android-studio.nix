@@ -2,7 +2,13 @@
 {
   nixpkgs.config.android_sdk.accept_license = true;
 
-  home.packages = lib.mkBefore (with pkgs; [ android-studio ]);
+  home.packages = lib.mkBefore (
+    with pkgs;
+    [
+      android-studio
+      androidStudioPackages.dev
+    ]
+  );
 
   home.sessionVariables = {
     ANDROID_HOME = "$HOME/.local/share/android-sdk";
