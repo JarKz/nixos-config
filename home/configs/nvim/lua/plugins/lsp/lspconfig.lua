@@ -123,6 +123,15 @@ return {
                 enable = true,
               },
             },
+            imports = {
+              granularity = {
+                enforce = true,
+                group = "crate",
+              },
+              group = {
+                enable = true,
+              },
+            },
           }
         }
       },
