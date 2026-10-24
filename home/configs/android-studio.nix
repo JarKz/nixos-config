@@ -6,7 +6,6 @@
     with pkgs;
     [
       android-studio
-      androidStudioPackages.dev
     ]
   );
 
