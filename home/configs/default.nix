@@ -33,7 +33,7 @@ in
     ./yazi.nix
     ./zsh.nix
     ./fastfetch.nix
-    ./swww.nix
+    ./awww.nix
     ./xdg.nix
     ./browsers.nix
     ./obs.nix

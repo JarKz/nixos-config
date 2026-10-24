@@ -1,13 +1,13 @@
 # JarKz's NixOS configuration
 
-The configuration was copied from [my dotfiles](https://github.com/jarkz/dotfiles) with optimizations that can be doable with Nix.
+> [!NOTE] The configuration initially was copied from [my dotfiles](https://github.com/jarkz/dotfiles), but most of things were changed. So it's incompatible with it.
 
 ![Showcase](assets/showcase.png)
 
 Using components:
 
 - **WM**: niri
-- **Wallpaper**: SWWW
+- **Wallpaper**: AWWW
 - **Lock**: hyprlock
 - **Idle manager**: hypridle
 - **Bar**: Waybar
@@ -30,7 +30,7 @@ I recommend this approach because your machine will differ from mine. And mine `
 
 #### VPN
 
-My NixOS-configuration assumes that you uses VPN and because of this there is a missing `system/vpn.nix`. If you don't use it, remove the line from import in `system/default.nix`.
+My NixOS-configuration can assume that you have VPN setup, but doesn't require it. If you want to write a configuration for it, then uncomment import line in `system/default.nix`.
 
 #### User
 
@@ -39,7 +39,7 @@ Update the user name at `system/users.nix` to your. Don't forget after updating 
 #### Rebiuld System
 
 ```bash
-# nixos-rebuild switch --flake .#desktop
+# nixos-rebuild switch --flake .#{appropriate-flake}
 ```
 
 ### Home Manager
@@ -50,17 +50,17 @@ Below steps are provided either as next steps after NixOS configuration or for s
 
 You may have another output size, its name as another port and so on. I've grouped them into `machineSpecs` that is described by TOML files at `specs/*.toml`. And tweak it when you deem it necessary.
 
+It's important thing for home-manager setups because they differ only by specific configurations. For instance, on non-NixOS system need to use nixGL, because without it applications that are provided by nix manager will not have appropriate graphic libraries and won't run their GUI normally.
+
 If you have some questions of these specs, you can read [a simple documenation for this](./specs/SPECIFICATION.md).
 
-#### Desktop and Laptop
+#### Machine types
 
-There is two home configurations depending on what machine is used: desktop or laptop. This is reflected in the configuration name by template `"{user}@{machine_type}"`.
-
-The main difference between these configurations is using Linux distributive. My desktop have NixOS, but my laptop have Arch Linux that needs additional configurations like wrapping needed packages by `nixGL`. And because of this be careful with picking and tweaking these configuratoin. For instance, you can tweak the laptop configuration with making it as suitabl for NixOS.
+There are plenty configurations for different machines, depending on provided specification. Each of specifications made only for specific case, therefore you can not to use them, and make your own. Better to have a flake template like `"{user}@{machine_type}"`, because it's very memorizable.
 
 #### Activate configuration
 
-Firstly install the [home-manager](https://github.com/nix-community/home-manager) by nix-channel. There is a clear guide in link.
+Firstly install the [home-manager](https://github.com/nix-community/home-manager) by nix-channel (as standalone application or as package by flake). There is a clear guide in link.
 
 Switch current home manager configuration to specific by:
 
@@ -68,21 +68,8 @@ Switch current home manager configuration to specific by:
 $ home-manager switch --flake .{your_user}@{machine_type}
 ```
 
-> [!NOTE]
-> Rename specified home configuration to `{your_user}@{machine_type}` from `jarkz@{machine_type}` for convenience.
-
 ## Caveats
 
-### Additional tweaks
+My NixOS configuration may not suit for some of you, and it's normal. The main goal of putting this into GitHub was availability to configure my machines without frictions. And for some people it can be guide of "how to properly configure my system".
 
-This configuration was made perfectly for my machine and may not suit your. At this point I list here the potential changes that you can made:
-
-- niri configuration — `home/configuration/niri`
-- theme configuratoin — `home/configuration/theming`
-- waybar configuration - `home/configuration/waybar`
-
-### Possible solves
-
-The caveats may be resolved with using `machineSpecs` or `configurationSpecs`. In other words, it doable with struct that have specific schema by which the configuration will be less messy.
-
-But this solves only small parts of configurations. It won't resolve such cases like deem of full modifying the waybar to your.
+It's impossible to make an easy configuration that suits for all people, like... Each of us have different tastes.
