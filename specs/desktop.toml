@@ -1,4 +1,8 @@
 is-not-nixos = false
+use-custom-services = true
+
+[locale]
+language = "en_US.UTF-8"
 
 [outputs.main]
 name = "DP-1"
@@ -23,3 +27,6 @@ offset = { x = "3440", y = "-300" }
 layouts = "us,ru,by"
 variants = ""
 options = "compose:rctrl"
+
+[git]
+signing_key = ""

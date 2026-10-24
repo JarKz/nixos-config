@@ -1,7 +1,10 @@
-{ ... }:
+{ machineSpecs, ... }:
+let
+  enabled = machineSpecs.use-custom-services;
+in
 {
   programs.noti-rs = {
-    enable = true;
+    enable = enabled;
     service = true;
   };
 }

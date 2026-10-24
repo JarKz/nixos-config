@@ -1,10 +1,16 @@
-{ config, pkgs, machineSpecs, ... }:
+{
+  config,
+  pkgs,
+  machineSpecs,
+  ...
+}:
 let
   hyprlock = if machineSpecs.is-not-nixos then config.lib.nixGL.wrap pkgs.hyprlock else pkgs.hyprlock;
+  enabled = machineSpecs.use-custom-services;
 in
 {
   services.hypridle = {
-    enable = true;
+    enable = enabled;
 
     settings = {
       general = {

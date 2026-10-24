@@ -5,7 +5,13 @@
 
   users.users.jarkz = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "audio" "docker" "input" "kvm" ];
+    extraGroups = [ "wheel" "audio" "docker" "input" "kvm" "networkmanager" ];
+    shell = pkgs.zsh;
+  };
+
+  users.users.alex = {
+    isNormalUser = true;
+    extraGroups = [ "wheel" "audio" "docker" "input" "kvm" "networkmanager" ];
     shell = pkgs.zsh;
   };
 

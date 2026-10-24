@@ -7,6 +7,7 @@
   ...
 }:
 let
+  enabled = machineSpecs.use-custom-services;
   wezterm = if machineSpecs.is-not-nixos then config.lib.nixGL.wrap pkgs.wezterm else pkgs.wezterm;
 
   vocabulary = with pkgs; {
@@ -53,7 +54,7 @@ in
   ];
 
   programs.waybar = {
-    enable = true;
+    enable = enabled;
     systemd.enable = true;
 
     style = builtins.readFile ./style.css;

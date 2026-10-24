@@ -1,6 +1,8 @@
-{ username, ... }:
+{ username, machineSpecs, ... }:
 let
   sessionVariables = {
+    LANG = machineSpecs.locale.language;
+
     XDG_CONFIG_HOME = "$HOME/.config";
     XDG_DATA_HOME = "$HOME/.local/share";
     XDG_SESSION_TYPE = "wayland";

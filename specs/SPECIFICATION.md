@@ -14,11 +14,22 @@ Below I described each available configuration that need to be set.
 
 ## Properties
 
-| Property       | Description                                                                                   |
-| :------------- | :-------------------------------------------------------------------------------------------- |
-| `is-not-nixos` | Set `false` if your current distro is NixOS, otherwise set `true`                             |
-| `outputs`      | Table of your defined outputs with specific configuration. See below for further information. |
-| `keyboard`     | Table of your keyboard and layout configuration by XKB (most usual in Wayland)                |
+| Property              | Description                                                                                                                       |
+| :-------------------- | :-------------------------------------------------------------------------------------------------------------------------------- |
+| `is-not-nixos`        | Set `false` if your current distro is NixOS, otherwise set `true`                                                                 |
+| `use-custom-services` | Set `false` if you use ready-to-use DE/WM, otherwise set `true` to have custom bar, notification, launcher and other applications |
+| `locale`              | Table of yous defined locales per user.                                                                                           |
+| `outputs`             | Table of your defined outputs with specific configuration. See below for further information.                                     |
+| `keyboard`            | Table of your keyboard and layout configuration by XKB (most usual in Wayland)                                                    |
+| `git`                 | Table of your defined git global configurations per user.                                                                         |
+
+### Locale
+
+All locales uses language and county code with corresponding encoding (i.e. `"en_US.UTF-8"`).
+
+| Property   | Description                   |
+| :--------- | :---------------------------- |
+| `language` | Sets the language for a user. |
 
 ### Outputs
 
@@ -51,3 +62,9 @@ They both have the same list of properties:
 
 > [!NOTE]
 > [The wiki](https://github.com/YaLTeR/niri/wiki/Configuration:-Input#keyboard) of niri have best explanation for each property.
+
+### git
+
+| Property      | Description                                                                            |
+| :------------ | :------------------------------------------------------------------------------------- |
+| `signing_key` | GPG/SSH signing key for git commits. Recommended to use fingerprints (without spaces). |

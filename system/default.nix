@@ -54,6 +54,6 @@
     ./store.nix
     ./login.nix
     ./users.nix
-    ./vpn.nix
+    # ./vpn.nix
   ];
 }

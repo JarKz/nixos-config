@@ -1,4 +1,4 @@
-{...}:
+{ machineSpecs, ... }:
 {
   programs = {
     difftastic = {
@@ -8,6 +8,11 @@
 
     git = {
       enable = true;
+
+      signing = {
+        key = machineSpecs.git.signing_key;
+        signByDefault = true;
+      };
 
       settings.alias = {
         cm = "commit";

@@ -1,0 +1,32 @@
+is-not-nixos = false
+use-custom-services = false
+
+[locale]
+language = "ru_RU.UTF-8"
+
+[outputs.main]
+name = "HDMI-A-1"
+width = "1920"
+height = "1080"
+scale = "1"
+framerate = "60.000"
+transform = "normal"
+offset = { x = "0", y = "0" }
+
+[outputs.secondary]
+name = "HDMI-A-2"
+width = "1920"
+height = "1080"
+scale = "1"
+framerate = "60.000"
+transform = "normal"
+offset = { x = "2560", y = "-300" }
+
+
+[keyboard]
+layouts = "us,ru,by"
+variants = ""
+options = "compose:rctrl"
+
+[git]
+signing_key = "D3EA429B072B3386E49A47579D6F3A6056C9B3A5"

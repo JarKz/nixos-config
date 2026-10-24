@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     materia-kde-theme
     papirus-icon-theme
+    kdePackages.qtstyleplugin-kvantum
   ];
 
   xdg.configFile."Kvantum/kvantum.kvconfig".text = ''

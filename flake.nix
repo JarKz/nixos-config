@@ -58,11 +58,16 @@
         inherit system inputs;
       };
 
-      desktopSpecs = builtins.fromTOML (builtins.readFile ./specs/desktop.toml);
-      laptopSpecs = builtins.fromTOML (builtins.readFile ./specs/laptop.toml);
-      laptopNoSplitKbSpecs = builtins.fromTOML (builtins.readFile ./specs/laptop-no-split-kb.toml);
     in
     {
+      nixosConfigurations.old-desktop = nixpkgs.lib.nixosSystem {
+        inherit system;
+        inherit specialArgs;
+        modules = [
+          ./hosts/old-desktop/configuration.nix
+        ];
+      };
+
       nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
         inherit system;
         inherit specialArgs;
@@ -114,11 +119,45 @@
 
         in
         {
+          "alex@desktop" = home-manager.lib.homeManagerConfiguration {
+            pkgs = pkgs;
+            extraSpecialArgs = {
+              username = "alex";
+              machineSpecs = builtins.fromTOML (builtins.readFile ./specs/de-old-desktop.toml);
+              overlays = defaultOverlays;
+
+              inherit
+                nixGL
+                flake-pkgs
+                tools
+                misc
+                ;
+            };
+            modules = defaultModules;
+          };
+
+          "jarkz@old-desktop" = home-manager.lib.homeManagerConfiguration {
+            pkgs = pkgs;
+            extraSpecialArgs = {
+              username = "jarkz";
+              machineSpecs = builtins.fromTOML (builtins.readFile ./specs/wm-old-desktop.toml);
+              overlays = defaultOverlays;
+
+              inherit
+                nixGL
+                flake-pkgs
+                tools
+                misc
+                ;
+            };
+            modules = defaultModules;
+          };
+
           "jarkz@desktop" = home-manager.lib.homeManagerConfiguration {
             pkgs = pkgs;
             extraSpecialArgs = {
               username = "jarkz";
-              machineSpecs = desktopSpecs;
+              machineSpecs = builtins.fromTOML (builtins.readFile ./specs/desktop.toml);
               overlays = defaultOverlays;
 
               inherit
@@ -130,11 +169,12 @@
             };
             modules = defaultModules;
           };
+
           "jarkz@laptop" = home-manager.lib.homeManagerConfiguration {
             pkgs = pkgs;
             extraSpecialArgs = {
               username = "jarkz";
-              machineSpecs = laptopSpecs;
+              machineSpecs = builtins.fromTOML (builtins.readFile ./specs/laptop.toml);
               overlays = defaultOverlays;
 
               inherit
@@ -146,11 +186,12 @@
             };
             modules = defaultModules;
           };
+
           "jarkz@laptop-no-split-kb" = home-manager.lib.homeManagerConfiguration {
             pkgs = pkgs;
             extraSpecialArgs = {
               username = "jarkz";
-              machineSpecs = laptopNoSplitKbSpecs;
+              machineSpecs = builtins.fromTOML (builtins.readFile ./specs/laptop-no-split-kb.toml);
               overlays = defaultOverlays;
 
               inherit

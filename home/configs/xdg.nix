@@ -49,6 +49,7 @@ in
           default = [
             "gnome"
             "gtk"
+            "kde"
           ];
           "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
           "org.freedesktop.impl.portal.AppChooser" = [ "gtk" ];
@@ -59,6 +60,7 @@ in
         xdg-desktop-portal-gnome
         xdg-desktop-portal-gtk
         xdg-desktop-portal-wlr
+        kdePackages.xdg-desktop-portal-kde
       ];
     };
   };
