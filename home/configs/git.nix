@@ -14,13 +14,21 @@
         signByDefault = true;
       };
 
-      settings.alias = {
-        cm = "commit";
-        st = "status";
-        rbi = "rebase -i";
-        rbc = "rebase --continue";
-        stuno = "status --untracked-files=no";
-        unstage = "restore --staged";
+      settings = {
+        alias = {
+          cm = "commit";
+          st = "status";
+          rbi = "rebase -i";
+          rbc = "rebase --continue";
+          stuno = "status --untracked-files=no";
+          unstage = "restore --staged";
+        };
+
+        safe.directory = "/etc/nixos";
+
+        user = machineSpecs.git.user;
+
+        init.defaultBranch = "master";
       };
     };
   };

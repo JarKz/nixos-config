@@ -29,4 +29,5 @@ variants = ""
 options = "compose:rctrl"
 
 [git]
+user = { name = "Pavel Bialiauski", email = "work.belyavsky.p.a@gmail.com" }
 signing_key = "D3EA429B072B3386E49A47579D6F3A6056C9B3A5"

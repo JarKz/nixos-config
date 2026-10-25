@@ -26,3 +26,6 @@ offset = { x = "-1920", y = "0" }
 layouts = "us,ru,by"
 variants = "colemak,diktor,"
 options = "compose:rctrl,caps:swapescape"
+
+[git]
+user = { name = "Pavel Bialiauski", email = "work.belyavsky.p.a@gmail.com" }

@@ -65,6 +65,7 @@ They both have the same list of properties:
 
 ### git
 
-| Property      | Description                                                                            |
-| :------------ | :------------------------------------------------------------------------------------- |
-| `signing_key` | GPG/SSH signing key for git commits. Recommended to use fingerprints (without spaces). |
+| Property      | Description                                                                                 |
+| :------------ | :------------------------------------------------------------------------------------------ |
+| `signing_key` | GPG/SSH signing key for git commits. Recommended to use fingerprints (without spaces).      |
+| `user`        | Table of user configuration. At current moment there are only `name` and `email` available. |
