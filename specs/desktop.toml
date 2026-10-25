@@ -29,4 +29,4 @@ variants = ""
 options = "compose:rctrl"
 
 [git]
-signing_key = ""
+signing_key="FA813AE301617A20FB74E73B2143E6D75204B2CD"
