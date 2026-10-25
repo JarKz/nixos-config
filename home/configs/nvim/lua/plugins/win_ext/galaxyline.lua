@@ -92,7 +92,7 @@ local function on_attach()
   gl.section.left[4] = {
     DiffAdd = {
       icon = "  ",
-      provider = function ()
+      provider = function()
         local count = vcs.diff_add()
         if count then
           return count
@@ -110,7 +110,7 @@ local function on_attach()
   gl.section.left[5] = {
     DiffModified = {
       icon = "  ",
-      provider = function ()
+      provider = function()
         local count = vcs.diff_modified()
         if count then
           return count
@@ -128,7 +128,7 @@ local function on_attach()
   gl.section.left[6] = {
     DiffRemove = {
       icon = "  ",
-      provider = function ()
+      provider = function()
         local count = vcs.diff_remove()
         if count then
           return count
@@ -265,5 +265,5 @@ return {
   "glepnir/galaxyline.nvim",
   branch = "main",
   config = on_attach,
-  dependencies = { "nvim-tree/nvim-web-devicons", "sainnhe/sonokai", opt = true },
+  dependencies = { "nvim-tree/nvim-web-devicons", opt = true },
 }

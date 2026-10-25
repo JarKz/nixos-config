@@ -1,7 +1,6 @@
 local wezterm = require("wezterm")
 
 local config = {
-  -- color_scheme = "Sonokai (Gogh)",
   color_scheme = "Catppuccin Latte",
   font = wezterm.font("JetBrainsMono Nerd Font Mono"),
   font_size = 14,

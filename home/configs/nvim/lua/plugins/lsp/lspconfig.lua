@@ -71,7 +71,6 @@ end
 return {
   "neovim/nvim-lspconfig",
   dependencies = {
-    "sainnhe/sonokai",
     "folke/which-key.nvim",
     "saghen/blink.cmp",
   },

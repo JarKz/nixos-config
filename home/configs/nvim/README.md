@@ -6,18 +6,18 @@ It's at most complete neovim configuration for me, because all required function
 But thrends can change, so I can remove or add another plugin that can be helpful in particular cases. 
 Also I can replace one plugin by another for specific reasons (archived plugin, unmantained code for some years or etc.).
 
-> __NOTE__
+> [!NOTE]
 >
 > Be sure that you use stable neovim version since 0.10, because my configuration have inlay hints functionality. Be patient, please 🙏.
 
 ## Structure
 
-The current structure of configuration based on standard for 'lazy.nvim' plugin:
+The current structure of configuration based on standard for `lazy.nvim` plugin:
 
-  - main file 'init.lua';
-  - config directory that setup and loads plugins: 'lua/config/';
-  - all plugins grouped and placed at 'lua/plugins' directory;
-  - configurations for particular file types placed at 'ftplugin/' (see more in vim `:help ftplugin`).
+  - The main file `./init.lua`;
+  - The config directory that setup and loads plugins: `./lua/config`;
+  - All plugins grouped and placed at `./lua/plugins` directory;
+  - Configurations for particular file types placed at `./ftplugin` (use `:help ftplugin` in vim to learn more).
 
 ## First start
 
@@ -33,13 +33,11 @@ Plugin manager:
 
 Colorscheme:
 
-  - `sainnhe/sonokai`
   - `catppuccin/nvim`
 
 Autopairs:
 
   - `altermo/ultimate-autopair.nvim`
-  - `windwp/nvim-ts-autotag`
   - `windwp/nvim-autopairs`
   - `abecodes/tabout.nvim`
 
@@ -52,10 +50,6 @@ Autocompletion:
 LSP:
 
   - `neovim/nvim-lspconfig`
-  - `williamboman/mason.nvim`
-  - `williamboman/mason-lspconfig.nvim`
-  - `jay-babu/mason-null-ls.nvim` which depends on:
-    - `jose-elias-alvarez/null-ls.nvim`
   - `folke/trouble.nvim`
   - `folke/lazydev.nvim`
 
@@ -77,8 +71,8 @@ Extensions:
   - `lewis6991/gitsigns.nvim`
   - `booperlv/nvim-gomove`
   - `lukas-reineke/indent-blankline.nvim`
-  - `chrisgrieser/nvim-spider`, depends on:
-    - `theHamsta/nvim_rocks` - to enable UTF-8
+  - `chentoast/marks.nvim`
+  - `chrisgrieser/nvim-spider`, depends on `luautf8` package that is provided by nix.
   - `chrisgrieser/nvim-rip-substitute`
   - `JarKz/specs.nvim` instead of `edluffy/specs.nvim` because of deprecatibility nvim-api.
   - `noti-rs/noti.nvim`
@@ -99,6 +93,7 @@ Window extensions:
   - `rcarriga/nvim-notify`
   - `stevearc/oil.nvim`
   - `NStefan002/screenkey.nvim`
+  - `folke/snacks.nvim`
 
 Icons: `nvim-tree/nvim-web-devicons`
 
