@@ -1,4 +1,14 @@
-{ lib, pkgs, ... }:
+{
+  lib,
+  pkgs,
+  machineSpecs,
+  ...
+}:
+# TODO: uncomment this on next kmscon release
+# let
+#   primaryOutput = machineSpecs.outputs.main;
+#   secondaryOutput = machineSpecs.outputs.secondary;
+# in
 {
   networking.networkmanager.enable = true;
 
@@ -24,6 +34,29 @@
 
     gvfs.enable = true;
     udisks2.enable = true;
+
+    kmscon = {
+      enable = true;
+
+      config = {
+        hwaccel = true;
+        libseat = true;
+        mouse = true;
+        use-original-mode = false;
+
+        xkb-layout = machineSpecs.keyboard.layouts;
+        xkb-variant = machineSpecs.keyboard.variants;
+        xkb-options = machineSpecs.keyboard.options;
+
+        # TODO: uncomment this on next kmscon release
+        # mode = "[${primaryOutput.name}]${primaryOutput.width}x${primaryOutput.height}@${primaryOutput.framerate}";
+        # screen = "[${secondaryOutput.name}]disabled";
+
+        font-engine = "freetype";
+        font-size = 16;
+        font-name = "JetBrainsMono NFM";
+      };
+    };
   };
 
   programs = {

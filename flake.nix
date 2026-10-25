@@ -54,15 +54,19 @@
     inputs@{ nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
-      specialArgs = {
-        inherit system inputs;
-      };
 
+      wmOldDesktopSpecs = builtins.fromTOML (builtins.readFile ./specs/wm-old-desktop.toml);
+      desktopSpecs = builtins.fromTOML (builtins.readFile ./specs/desktop.toml);
+      laptopSpecs = builtins.fromTOML (builtins.readFile ./specs/laptop.toml);
     in
     {
       nixosConfigurations.old-desktop = nixpkgs.lib.nixosSystem {
         inherit system;
-        inherit specialArgs;
+        specialArgs = {
+          inherit system inputs;
+          machineSpecs = wmOldDesktopSpecs;
+          mainUsername = "alex";
+        };
         modules = [
           ./hosts/old-desktop/configuration.nix
         ];
@@ -70,7 +74,11 @@
 
       nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
         inherit system;
-        inherit specialArgs;
+        specialArgs = {
+          inherit system inputs;
+          machineSpecs = desktopSpecs;
+          mainUsername = "jarkz";
+        };
         modules = [
           ./hosts/desktop/configuration.nix
         ];
@@ -78,7 +86,11 @@
 
       nixosConfigurations.laptop = nixpkgs.lib.nixosSystem {
         inherit system;
-        inherit specialArgs;
+        specialArgs = {
+          inherit system inputs;
+          machineSpecs = laptopSpecs;
+          mainUsername = "jarkz";
+        };
         modules = [
           ./hosts/laptop/configuration.nix
         ];
@@ -140,7 +152,7 @@
             pkgs = pkgs;
             extraSpecialArgs = {
               username = "jarkz";
-              machineSpecs = builtins.fromTOML (builtins.readFile ./specs/wm-old-desktop.toml);
+              machineSpecs = wmOldDesktopSpecs;
               overlays = defaultOverlays;
 
               inherit
@@ -157,7 +169,7 @@
             pkgs = pkgs;
             extraSpecialArgs = {
               username = "jarkz";
-              machineSpecs = builtins.fromTOML (builtins.readFile ./specs/desktop.toml);
+              machineSpecs = desktopSpecs;
               overlays = defaultOverlays;
 
               inherit
@@ -174,7 +186,7 @@
             pkgs = pkgs;
             extraSpecialArgs = {
               username = "jarkz";
-              machineSpecs = builtins.fromTOML (builtins.readFile ./specs/laptop.toml);
+              machineSpecs = laptopSpecs;
               overlays = defaultOverlays;
 
               inherit
