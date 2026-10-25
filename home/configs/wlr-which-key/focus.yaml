@@ -93,25 +93,20 @@ menu:
     cmd: niri msg action focus-workspace 9
 
   - key: ["Alt+m"]
-    keep_open: true
     desc: Focus the Main workspace
-    cmd: niri msg action focus-workspace "main"
+    cmd: niri msg action focus-workspace "main" && {{ wlr-which-key }} focus
   - key: ["Alt+w"]
-    keep_open: true
     desc: Focus the Work workspace
-    cmd: niri msg action focus-workspace "work"
+    cmd: niri msg action focus-workspace "work" && {{ wlr-which-key }} focus
   - key: ["Alt+g"]
-    keep_open: true
     desc: Focus the Game workspace
-    cmd: niri msg action focus-workspace "game"
+    cmd: niri msg action focus-workspace "game" && {{ wlr-which-key }} focus
   - key: ["Alt+s"]
-    keep_open: true
     desc: Focus the Social workspace
-    cmd: niri msg action focus-workspace "social"
+    cmd: niri msg action focus-workspace "social" && {{ wlr-which-key }} focus
   - key: ["Alt+i"]
-    keep_open: true
     desc: Focus the Info workspace
-    cmd: niri msg action focus-workspace "info"
+    cmd: niri msg action focus-workspace "info" && {{ wlr-which-key }} focus
 
   - key: "m"
     desc: Use move mode

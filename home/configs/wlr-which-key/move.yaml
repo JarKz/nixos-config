@@ -104,25 +104,20 @@ menu:
     cmd: niri msg action move-column-to-workspace 9
 
   - key: ["Alt+m"]
-    keep_open: true
     desc: Move the focused column to Main workspace
-    cmd: niri msg action move-column-to-workspace "main"
+    cmd: niri msg action move-column-to-workspace "main" && {{ wlr-which-key }} move
   - key: ["Alt+w"]
-    keep_open: true
     desc: Move the focused column to Work workspace
-    cmd: niri msg action move-column-to-workspace "work"
+    cmd: niri msg action move-column-to-workspace "work" && {{ wlr-which-key }} move
   - key: ["Alt+g"]
-    keep_open: true
     desc: Move the focused column to Game workspace
-    cmd: niri msg action move-column-to-workspace "game"
+    cmd: niri msg action move-column-to-workspace "game" && {{ wlr-which-key }} move
   - key: ["Alt+s"]
-    keep_open: true
     desc: Move the focused column to Social workspace
-    cmd: niri msg action move-column-to-workspace "social"
+    cmd: niri msg action move-column-to-workspace "social" && {{ wlr-which-key }} move
   - key: ["Alt+i"]
-    keep_open: true
     desc: Move the focused column to Info workspace
-    cmd: niri msg action move-column-to-workspace "info"
+    cmd: niri msg action move-column-to-workspace "info" && {{ wlr-which-key }} move
 
   - key: ["w"]
     desc: Use workspace movements
