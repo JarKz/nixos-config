@@ -15,6 +15,7 @@ let
   };
 
   vocabulary = with pkgs; {
+    ron-lsp = "${ron-lsp}/bin/ron-lsp";
     clangd = "${llvmPackages_21.clang-tools}/bin/clangd";
     tinymist = "${tinymist}/bin/tinymist";
     pyright-langserver = "${pyright}/bin/pyright-langserver";
@@ -62,6 +63,7 @@ let
     tree-sitter-lua
     tree-sitter-bash
     tree-sitter-rust
+    tree-sitter-ron
   ];
 
   cleanTSName = lang: lib.strings.removePrefix "tree-sitter-" lang.pname;
@@ -128,6 +130,7 @@ in
       lldb
 
       # Language Servers
+      ron-lsp # rusty object notation lsp
       llvmPackages_21.clang-tools # clangd
       efm-langserver
       nil # nil_ls

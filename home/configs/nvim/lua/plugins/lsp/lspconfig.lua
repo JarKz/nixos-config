@@ -134,6 +134,12 @@ return {
           }
         }
       },
+      ron_lsp = {
+        cmd = { "{{ ron-lsp }}" },
+        filetypes = { "ron" },
+        root_markers = { "Cargo.toml", ".git" },
+        settings = {}
+      },
       nil_ls = {
         cmd = { "{{ nil }}" }
       },
@@ -195,14 +201,15 @@ return {
         lineFoldingOnly = true,
       }
 
-      vim.lsp.enable(server)
       if tbl_len(config) > 0 then
         vim.lsp.config(server, config)
       end
+
+      vim.lsp.enable(server)
     end
 
-    vim.lsp.enable("efm")
     vim.lsp.config("efm", opts.efm)
+    vim.lsp.enable("efm")
 
     -- Use LspAttach autocommand to only map the following keys
     -- after the language server attaches to the current buffer
