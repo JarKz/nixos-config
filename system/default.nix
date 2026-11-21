@@ -85,6 +85,7 @@ in
     ./store.nix
     ./login.nix
     ./users.nix
+    ./windows.nix
     ./vpn.nix
   ];
 }

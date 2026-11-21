@@ -70,6 +70,34 @@
     ];
   };
 
+  fileSystems."/windows/c_drive" = {
+    device = "/dev/disk/by-label/WINDOWS_C_DRIVE";
+    fsType = "ntfs3";
+    options = [
+      "nofail"
+      "uid=1001"
+      "gid=ntfs-share"
+      "dmask=000"
+      "fmask=111"
+      "windows_names"
+      "iocharset=utf8"
+    ];
+  };
+
+  fileSystems."/windows/d_drive" = {
+    device = "/dev/disk/by-label/WINDOWS_D_DRIVE";
+    fsType = "ntfs3";
+    options = [
+      "nofail"
+      "uid=1001"
+      "gid=ntfs-share"
+      "dmask=000"
+      "fmask=111"
+      "windows_names"
+      "iocharset=utf8"
+    ];
+  };
+
   swapDevices = [
     {
       device = "/var/lib/swapfile";

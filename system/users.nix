@@ -3,15 +3,17 @@
 {
   programs.zsh.enable = true;
 
+  users.groups.ntfs-share = {};
+
   users.users.jarkz = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "audio" "docker" "input" "kvm" "networkmanager" ];
+    extraGroups = [ "wheel" "audio" "docker" "input" "kvm" "networkmanager" "ntfs-share" ];
     shell = pkgs.zsh;
   };
 
   users.users.alex = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "audio" "docker" "input" "kvm" "networkmanager" ];
+    extraGroups = [ "wheel" "audio" "docker" "input" "kvm" "networkmanager" "ntfs-share" ];
     shell = pkgs.zsh;
   };
 
