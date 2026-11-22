@@ -36,9 +36,11 @@
     ]
   );
 
-  services.scx = {
+  services.scx-loader = {
     enable = true;
-    scheduler = "scx_rusty";
+    config = {
+      default_sched = "scx_rusty";
+    };
   };
 
   services.ollama = {
